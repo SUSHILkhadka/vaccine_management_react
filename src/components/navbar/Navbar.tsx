@@ -18,7 +18,6 @@ const Navbar = () => {
           ff
         </CNavlink>
       </div>
-
       <Outlet />
     </div>
   );

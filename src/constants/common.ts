@@ -1,1 +1,1 @@
-export const widthOfLoginForm="50%"
+export const URL_TO_BACKEND='https://localhost:8000'

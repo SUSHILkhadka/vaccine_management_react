@@ -4,15 +4,13 @@
     font-size: 18px;
     display: flex;
 }
+
 .tab:hover{
     background-color: $white2;
+    border-radius: 20px;
 }
-.icon{
+
+.tab--icon{
 text-align: left;
 margin: 0 1rem;
-}
-.navlink{
-    display: flex;
-    justify-self: left;
-    text-align: left;
 }

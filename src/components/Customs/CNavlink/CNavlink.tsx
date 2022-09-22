@@ -1,17 +1,15 @@
-import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './CNavlink.scss';
 
 const CNavlink = (props: any) => {
   const remainingProps = { ...props };
   delete remainingProps.Icon;
   return (
-    <Link className='tab' to={props.to}>
-      <div className='icon'>
-        {<props.Icon classname='icon'/>}
-      </div>
-      <Link className='navlink' {...remainingProps} />
-    </Link>
+    <NavLink className='tab' {...remainingProps}>
+      <div className='tab--icon'>{<props.Icon classname='icon' />}</div>
+     <div className='tab--name'> {props.children}</div>
+    </NavLink>
   );
 };
 export default CNavlink;
