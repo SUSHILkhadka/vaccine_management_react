@@ -1,0 +1,26 @@
+@import "./Variables.scss";
+.form{
+   margin: auto;
+   margin-top: 15vh;
+   padding: 2rem;
+    width: 40%;
+    background-color:$white2;
+    border-radius: 20px;
+
+    box-shadow: 10px 10px 62px 0px rgba(68,71,151,0.75);
+-webkit-box-shadow: 10px 10px 62px 0px rgba(68,71,151,0.75);
+-moz-box-shadow: 10px 10px 62px 0px rgba(68,71,151,0.75);
+}
+.form--login--header{
+    color: $pink1;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 1rem;
+}
+
+a{
+    color: $black1;
+}
+a:hover{
+    color:$pink1
+}
