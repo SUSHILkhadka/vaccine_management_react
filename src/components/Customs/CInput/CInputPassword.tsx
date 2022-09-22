@@ -1,6 +1,8 @@
 import { Input } from 'antd';
-import '../../../styles/Input.scss';
+import { InputProps } from "antd/lib/input";
 
-export const CInputPassword = (props: any) => {
+import './Input.scss';
+
+export const CInputPassword = (props: InputProps) => {
   return <Input.Password className='input input--password' {...props} />;
 };

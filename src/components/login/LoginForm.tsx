@@ -1,10 +1,11 @@
 import { LockOutlined, MailOutlined } from '@ant-design/icons';
-import { Button, Form } from 'antd';
+import { Form } from 'antd';
 import React from 'react';
 import '../../styles/Form.scss';
 import { CButtonLogin } from '../Customs/CButtons/CButtonLogin';
 import { CInputPassword } from '../Customs/CInput/CInputPassword';
 import { CInputString } from '../Customs/CInput/CInputString';
+
 const LoginForm: React.FC = () => {
   const onFinish = (values: any) => {
     console.log('Success:', values);
@@ -16,11 +17,11 @@ const LoginForm: React.FC = () => {
 
   return (
     <div className='form'>
-      <div className='form--login--header'>Login</div>
+      <div className='form--login--header'>LogIn</div>
       <Form
         name='basic'
         layout='vertical'
-        labelCol={{ span: 24 }}
+        labelCol={{offset:1, span: 24 }}
         wrapperCol={{ span: 24 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
@@ -29,18 +30,24 @@ const LoginForm: React.FC = () => {
         requiredMark={false}
       >
         <Form.Item
-          label='Username'
-          name='username'
-          rules={[{ required: true, message: 'Please input your username!' }]}
+          label='Email'
+          name='email'
+          rules={[{ required: true, message: 'Please input your email!' }]}
         >
-          <CInputString prefix={<MailOutlined />} placeholder="input your email"/>
+          <CInputString
+            prefix={<MailOutlined />}
+            placeholder='input your email'
+          />
         </Form.Item>
         <Form.Item
           label='Password'
           name='password'
           rules={[{ required: true, message: 'Please input your password!' }]}
         >
-          <CInputPassword prefix={<LockOutlined />}  placeholder="input your password"/>
+          <CInputPassword
+            prefix={<LockOutlined />}
+            placeholder='input your password'
+          />
         </Form.Item>
 
         <Form.Item wrapperCol={{ offset: 0, span: 24 }}>
