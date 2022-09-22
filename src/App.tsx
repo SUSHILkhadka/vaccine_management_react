@@ -1,12 +1,13 @@
+import 'antd/dist/antd.css';
 import './App.css';
-import "antd/dist/antd.css";
-import LoginPage from './pages/login/LoginPage';
-import RegisterPage from './pages/register/RegisterPage';
+import AppRoutes from './router/AppRoutes';
 
 function App() {
-  return <div className='App'>
-    <RegisterPage/>
-  </div>;
+  return (
+    <div className='App'>
+      <AppRoutes />
+    </div>
+  );
 }
 
 export default App;

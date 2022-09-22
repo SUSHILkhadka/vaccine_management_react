@@ -1,6 +1,9 @@
 import { LockOutlined, MailOutlined } from '@ant-design/icons';
 import { Form } from 'antd';
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { PATH_REGISTER } from '../../constants/routes';
 import '../../styles/Form.scss';
 import { CButtonLogin } from '../Customs/CButtons/CButtonLogin';
 import { CInputPassword } from '../Customs/CInput/CInputPassword';
@@ -21,7 +24,7 @@ const LoginForm: React.FC = () => {
       <Form
         name='basic'
         layout='vertical'
-        labelCol={{offset:1, span: 24 }}
+        labelCol={{ offset: 1, span: 24 }}
         wrapperCol={{ span: 24 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
@@ -55,7 +58,7 @@ const LoginForm: React.FC = () => {
             Login
           </CButtonLogin>
         </Form.Item>
-        <a>Sign Up</a>
+        <Link to={PATH_REGISTER}>Sign Up</Link>
       </Form>
     </div>
   );

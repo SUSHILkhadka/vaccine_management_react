@@ -1,6 +1,9 @@
-import { LockOutlined, MailOutlined } from '@ant-design/icons';
+import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
 import { Form } from 'antd';
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { PATH_LOGIN } from '../../constants/routes';
+import { IRegister } from '../../interface/IRegister';
 import '../../styles/Form.scss';
 import { ruleForSignIn } from '../../validations/formValidator';
 import { CButtonLogin } from '../Customs/CButtons/CButtonLogin';
@@ -8,8 +11,8 @@ import { CInputPassword } from '../Customs/CInput/CInputPassword';
 import { CInputString } from '../Customs/CInput/CInputString';
 
 const RegisterForm: React.FC = () => {
-  const onFinish = (values: FormData) => {
-    console.log(values);
+  const onFinish = (values: any) => {
+    console.log({ ...values } as IRegister);
   };
 
   const confirmPasswordRule = (getFieldValue: any, value: string) => {
@@ -18,6 +21,11 @@ const RegisterForm: React.FC = () => {
     } else {
       return Promise.reject(new Error('Password do not match'));
     }
+  };
+
+  const trimmer = (value: string) => {
+    const startTrimmedValue = value.trimStart();
+    return startTrimmedValue;
   };
 
   return (
@@ -38,9 +46,10 @@ const RegisterForm: React.FC = () => {
           name='name'
           rules={[ruleForSignIn]}
           hasFeedback
+          normalize={trimmer}
         >
           <CInputString
-            prefix={<MailOutlined />}
+            prefix={<UserOutlined />}
             placeholder='input your name'
           />
         </Form.Item>
@@ -50,6 +59,7 @@ const RegisterForm: React.FC = () => {
           name='email'
           rules={[ruleForSignIn]}
           hasFeedback
+          normalize={trimmer}
         >
           <CInputString
             prefix={<MailOutlined />}
@@ -74,6 +84,7 @@ const RegisterForm: React.FC = () => {
           name='confirmPassword'
           dependencies={['password']}
           hasFeedback
+          normalize={trimmer}
           rules={[
             ({ getFieldValue }) => ({
               validator(_, value) {
@@ -93,7 +104,7 @@ const RegisterForm: React.FC = () => {
             Sign Up
           </CButtonLogin>
         </Form.Item>
-        <a>Log In</a>
+        <Link to={PATH_LOGIN}>Log In</Link>
       </Form>
     </div>
   );

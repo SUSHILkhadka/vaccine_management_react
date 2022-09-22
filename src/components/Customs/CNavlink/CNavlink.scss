@@ -1,0 +1,18 @@
+@import "../../../styles/Variables.scss";
+.tab{
+    display: flex;
+    font-size: 18px;
+    display: flex;
+}
+.tab:hover{
+    background-color: $white2;
+}
+.icon{
+text-align: left;
+margin: 0 1rem;
+}
+.navlink{
+    display: flex;
+    justify-self: left;
+    text-align: left;
+}
