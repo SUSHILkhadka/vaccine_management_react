@@ -1,0 +1,25 @@
+.form--vaccine--header--container{
+
+}
+
+.form--vaccine--header--left{
+    display: flex;
+    justify-content: left;
+
+}
+.form--vaccine--header--right{
+    display: flex;
+    justify-content: right;
+
+}
+.form--vaccine{
+    background-color: rgb(122, 99, 99);
+    width: 50%;
+}
+
+.button--save{
+width: 30%;
+align-self: flex-end;
+}
+
+

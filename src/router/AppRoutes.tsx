@@ -5,11 +5,13 @@ import Navbar from '../components/navbar/Navbar';
 import {
   PATH_LOGIN,
   PATH_REGISTER,
+  PATH_VACCINE_ADD,
   PATH_VACCINE_TABLE,
 } from '../constants/routes';
 import LoginPage from '../pages/login/LoginPage';
 import RegisterPage from '../pages/register/RegisterPage';
 import SplashScreen from '../pages/SplashScreen';
+import AddVaccinePage from '../pages/vaccine/AddVaccinePage';
 import ListVaccinePage from '../pages/vaccine/ListVaccinePage';
 import { checkToken } from '../redux_toolkit/slices/authSlice';
 import { AppDispatch, RootState } from '../redux_toolkit/stores/store';
@@ -34,6 +36,7 @@ function AppRoutes() {
         <Route path='/' element={<ProtectedRoutes />}>
           <Route path='/' element={<Navbar />}>
             <Route path={PATH_VACCINE_TABLE} element={<ListVaccinePage />} />
+            <Route path={PATH_VACCINE_ADD} element={<AddVaccinePage />} />
           </Route>
         </Route>
       </Routes>

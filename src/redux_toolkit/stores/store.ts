@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { authReducer } from '../slices/authSlice';
+import { vaccineReducer } from '../slices/vaccineSlice';
 export const store = configureStore({
   reducer: {
     auth: authReducer,
+    vaccine:vaccineReducer
   },
 });
 

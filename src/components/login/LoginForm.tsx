@@ -8,7 +8,7 @@ import { PATH_REGISTER, PATH_ROOT } from '../../constants/routes';
 import { saveLoginResponse } from '../../cookies/cookie';
 import { setAuthWithLoginResponse } from '../../redux_toolkit/slices/authSlice';
 import '../../styles/Form.scss';
-import successMessage, { errorMessage } from '../../utils/message';
+import successMessage, { errorMessage, showDefaultErrorMessage } from '../../utils/message';
 import { getLoginBodyFromForm } from '../../utils/parser';
 import { CButtonLogin } from '../Customs/CButtons/CButtonLogin';
 import { CInputPassword } from '../Customs/CInput/CInputPassword';
@@ -31,14 +31,13 @@ const LoginForm: React.FC = () => {
       navigate(PATH_ROOT, { replace: true });
       successMessage(response.message);
     } catch (e: any) {
-      errorMessage('Something went wrong')
+      showDefaultErrorMessage()
       // if (e.response) errorMessage(e.response.data.message);
       // else errorMessage(e);
     }
 
     setloading(false);
   };
-
 
   return (
     <div className='form'>

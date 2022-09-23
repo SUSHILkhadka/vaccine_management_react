@@ -46,7 +46,7 @@ instance.interceptors.response.use(
       if (
         err.response.status === 401 &&
         !originalConfig._retry &&
-        err.response.data.message === 'invalid access token'
+        err.response.data.message === 'Invalid access token'
       ) {
         // Access Token was expired
         originalConfig._retry = true;
@@ -63,7 +63,7 @@ instance.interceptors.response.use(
       } else if (
         err.response.status === 401 &&
         !originalConfig._retry &&
-        err.response.data.message === 'invalid refresh token'
+        err.response.data.message === 'Invalid refresh token'
       ) {
         //refresh token was invalid
         saveLoginResponse('');

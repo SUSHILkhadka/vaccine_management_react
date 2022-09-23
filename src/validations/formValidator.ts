@@ -1,6 +1,7 @@
 import * as yup from 'yup';
 import { checkForEmail } from '../axios/backendUser';
 import signupSchema from './signupSchema';
+import vaccineSchema from './vaccineSchema';
 /**
  * field: is key of value
  * value: is value to be validated
@@ -20,6 +21,7 @@ export const ruleForSignIn = {
     await keyValueValidator(field, value, signupSchema),
 };
 
+
 export const checkIfEmailAlreadyExists = {
   validator: async ({ field }: any, value: any) => {
     // throw "ff"
@@ -31,4 +33,9 @@ export const checkIfEmailAlreadyExists = {
     }
     throw 'Email already exists';
   },
+};
+
+export const ruleForVaccine = {
+  validator: async ({ field }: any, value: any) =>
+    await keyValueValidator(field, value, vaccineSchema),
 };

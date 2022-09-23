@@ -1,18 +1,20 @@
 import Cookies from 'js-cookie';
+import jwt from 'jwt-decode';
+import { IDataAtToken } from '../interface/IDataAtToken';
 
 export const saveLoginResponse = (response: any) => {
   saveAccessToken(response.accessToken);
-  saveRefreshToken(response.refreshToken, response.expiresAtRefreshToken);
+  saveRefreshToken(response.refreshToken);
 };
 
 //cookies
 /**
  *
  * @param response accesstoken itself
- * saves accesstoken in cookie
+ * saves accesstoken in cookie  
  */
-export function saveAccessToken(response: string) {
-  Cookies.set('accessToken', response);
+export function saveAccessToken(accessToken: string) {
+  Cookies.set('accessToken', accessToken);
 }
 
 /**
@@ -30,8 +32,14 @@ export function getAccessToken(): string {
  * @param date expiry of refreshtoken as num in milisec, which is converted to UTC
  * saves in cookie as long as expiry time is greater than now.
  */
-export function saveRefreshToken(response: string, date?: any) {
-  Cookies.set('refreshToken', response, { expires: new Date(date) });
+export function saveRefreshToken(refreshToken: string) {
+  try{
+  const tokenData=jwt(refreshToken) as IDataAtToken
+  const date=tokenData.expiryDateForRefreshToken
+  Cookies.set('refreshToken', refreshToken, { expires: new Date(date) });
+  }catch{
+    Cookies.remove('refreshToken')
+  }
 }
 
 /**
