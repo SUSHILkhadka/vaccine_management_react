@@ -1,4 +1,5 @@
 import * as yup from 'yup';
+import { checkForEmail } from '../axios/backendUser';
 import signupSchema from './signupSchema';
 /**
  * field: is key of value
@@ -6,7 +7,7 @@ import signupSchema from './signupSchema';
  * schema: is yup object schema with constraints for validation defined
  * throws error
  */
-const formValidator = async (
+const keyValueValidator = async (
   key: string,
   value: any,
   schema: yup.ObjectSchema<any>
@@ -16,5 +17,18 @@ const formValidator = async (
 
 export const ruleForSignIn = {
   validator: async ({ field }: any, value: any) =>
-    await formValidator(field, value, signupSchema),
+    await keyValueValidator(field, value, signupSchema),
+};
+
+export const checkIfEmailAlreadyExists = {
+  validator: async ({ field }: any, value: any) => {
+    // throw "ff"
+    await keyValueValidator(field, value, signupSchema);
+    try {
+      await checkForEmail(value);
+    } catch (e) {
+      return 0;
+    }
+    throw 'Email already exists';
+  },
 };

@@ -1,13 +1,18 @@
 import { getRefreshToken } from '../cookies/cookie';
+import { IRegister } from '../interface/IRegister';
 import api from './api';
-
+const ENDPOINT_LOGIN = '/signin';
+const ENDPOINT_REGISTER = '/signup';
+const ENDPOINT_CHECKEMAIL = '/checkEmail';
+const ENDPOINT_LOGOUT = '/logout';
+const ENDPOINT_USER = '/user';
 /**
  *
  * @param body request's body for user login
  * @returns response from server
  */
 export async function login(body: any): Promise<any> {
-  const response = await api.post('/login', body);
+  const response = await api.post(ENDPOINT_LOGIN, body);
   return response.data;
 }
 
@@ -16,8 +21,18 @@ export async function login(body: any): Promise<any> {
  * @param body request's body for user register
  * @returns response from server
  */
-export async function register(body: any): Promise<any> {
-  const response = await api.post('/register', body);
+export async function register(body: IRegister): Promise<any> {
+  const response = await api.post(ENDPOINT_REGISTER, body);
+  return response.data;
+}
+
+/**
+ *
+ * @param body request's body for user register
+ * @returns response from server
+ */
+export async function checkForEmail(email: string): Promise<any> {
+  const response = await api.post(ENDPOINT_CHECKEMAIL, { email });
   return response.data;
 }
 
@@ -26,7 +41,7 @@ export async function register(body: any): Promise<any> {
  * @returns response after logout request
  */
 export async function logout(): Promise<any> {
-  const response = await api.post('/logout', {
+  const response = await api.post(ENDPOINT_LOGOUT, {
     refreshToken: getRefreshToken(),
   });
   return response.data;
@@ -38,6 +53,6 @@ export async function logout(): Promise<any> {
  * @returns response from server
  */
 export async function editUser(body: any): Promise<any> {
-  const response = await api.put('/user', body);
+  const response = await api.put(ENDPOINT_USER, body);
   return response.data;
 }

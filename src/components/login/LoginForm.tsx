@@ -2,7 +2,6 @@ import { LockOutlined, MailOutlined } from '@ant-design/icons';
 import { Form } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
 import { PATH_REGISTER } from '../../constants/routes';
 import '../../styles/Form.scss';
 import { CButtonLogin } from '../Customs/CButtons/CButtonLogin';
@@ -14,21 +13,15 @@ const LoginForm: React.FC = () => {
     console.log('Success:', values);
   };
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
-  };
-
   return (
     <div className='form'>
       <div className='form--login--header'>LogIn</div>
       <Form
-        name='basic'
         layout='vertical'
         labelCol={{ offset: 1, span: 24 }}
         wrapperCol={{ span: 24 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
         autoComplete='off'
         requiredMark={false}
       >
