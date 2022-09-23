@@ -24,13 +24,13 @@ export const authSlice = createSlice({
   name: 'authInfo',
   initialState: defaultValue,
   reducers: {
-    makeLoggedInWithInfo: (state, action) => {
+    setAuthWithLoginResponse: (state, action) => {
       state.id = action.payload.data.id;
       state.username = action.payload.data.name;
       state.email = action.payload.data.email;
       state.status = 'fulfilled';
     },
-    makeLoggedOut: (state) => {
+    resetAuth: (state) => {
       state.id = 0;
       state.username = '';
       state.email = '';
@@ -57,5 +57,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { makeLoggedInWithInfo, makeLoggedOut } = authSlice.actions;
+export const { setAuthWithLoginResponse, resetAuth } = authSlice.actions;
 export const authReducer = authSlice.reducer;

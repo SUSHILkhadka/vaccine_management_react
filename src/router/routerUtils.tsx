@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Navigate, Outlet, Route, useNavigate } from 'react-router-dom';
 import { PATH_LOGIN } from '../constants/routes';
 import { getRefreshToken } from '../cookies/cookie';
-import { makeLoggedOut } from '../redux_toolkit/slices/authSlice';
+import { resetAuth } from '../redux_toolkit/slices/authSlice';
 
 export const ProtectedRoutes = () => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ export const ProtectedRoutes = () => {
   useEffect(() => {
     if (!Boolean(getRefreshToken())) {
       message.error('refresh token expired');
-      dispatch(makeLoggedOut());
+      dispatch(resetAuth());
     }
   }, [navigate]);
   return Boolean(getRefreshToken()) ? <Outlet /> : <Navigate to={PATH_LOGIN} />;

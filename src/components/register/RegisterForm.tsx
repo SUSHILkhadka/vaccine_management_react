@@ -27,10 +27,10 @@ const RegisterForm: React.FC = () => {
       successMessage(response.message);
       navigate(PATH_LOGIN);
     } catch (e: any) {
-      console.log('error from server = ', e);
+      errorMessage("Something went wrong. Please try later")
 
-      if (e.response) errorMessage(e.response.data.message);
-      else errorMessage(e);
+      // if (e.response) errorMessage(e.response.data.message);
+      // else errorMessage(e);
     }
     setloading(false);
   };

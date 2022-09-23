@@ -1,17 +1,44 @@
 import { LockOutlined, MailOutlined } from '@ant-design/icons';
 import { Form } from 'antd';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { PATH_REGISTER } from '../../constants/routes';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { login } from '../../axios/backendUser';
+import { PATH_REGISTER, PATH_ROOT } from '../../constants/routes';
+import { saveLoginResponse } from '../../cookies/cookie';
+import { setAuthWithLoginResponse } from '../../redux_toolkit/slices/authSlice';
 import '../../styles/Form.scss';
+import successMessage, { errorMessage } from '../../utils/message';
+import { getLoginBodyFromForm } from '../../utils/parser';
 import { CButtonLogin } from '../Customs/CButtons/CButtonLogin';
 import { CInputPassword } from '../Customs/CInput/CInputPassword';
 import { CInputString } from '../Customs/CInput/CInputString';
 
 const LoginForm: React.FC = () => {
-  const onFinish = (values: any) => {
-    console.log('Success:', values);
+  const navigate = useNavigate();
+  const [loading, setloading] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const onFinish = async (values: FormData) => {
+    setloading(true);
+    const body = getLoginBodyFromForm(values);
+    try {
+      const response = await login(body);
+
+      dispatch(setAuthWithLoginResponse(response));
+      saveLoginResponse(response);
+      navigate(PATH_ROOT, { replace: true });
+      successMessage(response.message);
+    } catch (e: any) {
+      errorMessage('Something went wrong')
+      // if (e.response) errorMessage(e.response.data.message);
+      // else errorMessage(e);
+    }
+
+    setloading(false);
   };
+
 
   return (
     <div className='form'>

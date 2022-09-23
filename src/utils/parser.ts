@@ -1,14 +1,19 @@
 import { IRegister } from '../interface/IRegister';
 
 export const getRegisterBodyFromForm = (values: any):IRegister => {
-  console.log(values)
-  console.log(typeof values.email)
-
   const body = {
     name: values.name.trim(),
     email: values.email,
     password: values.password,
     confirmPassword: values.confirmPassword,
+  };
+  return body;
+};
+
+export const getLoginBodyFromForm = (values: any) => {
+  const body = {
+    email: values.email,
+    password: values.password,
   };
   return body;
 };
