@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { IVaccine } from '../../interface/IVaccine';
 
-export const defaultValue: IVaccine = {
+export const initalValue: IVaccine = {
   id: 0,
   name: '',
   description: '',
@@ -13,7 +13,7 @@ export const defaultValue: IVaccine = {
 
 export const vaccineSlice = createSlice({
   name: 'vaccineInfo',
-  initialState: defaultValue,
+  initialState: initalValue,
   reducers: {
     loadVaccine: (state, action) => {
       const newDatestring = action.payload.releaseDate
@@ -27,15 +27,7 @@ export const vaccineSlice = createSlice({
       state.photoUrl = action.payload.photoUrl;
       state.isMandatory = action.payload.isMandatory;
     },
-    resetVaccine: (state: IVaccine) => {
-      state.id = 0;
-      state.name = '';
-      state.description = '';
-      state.numberOfDoses = 0;
-      state.releaseDate = new Date();
-      state.photoUrl = '';
-      state.isMandatory = false;
-    },
+    resetVaccine: () => initalValue,
     changePhotoUrl: (state, action) => {
       state.photoUrl = action.payload;
     },

@@ -4,6 +4,7 @@ import { readAllVaccines } from '../../axios/backendVaccine';
 import CustomSort from '../../components/Customs/CSort/CSort';
 import CTable from '../../components/Customs/CTable/CTable';
 import { IVaccine } from '../../interface/IVaccine';
+import { showDefaultErrorMessage } from '../../utils/message';
 import { sortByAscendingAll } from '../../utils/sort';
 
 const ListVaccinePage: React.FC = () => {
@@ -28,8 +29,7 @@ const ListVaccinePage: React.FC = () => {
           setDataToDisplay(sortedArray);
         }
       } catch (e: any) {
-        if (e.response) message.error(e.response.data.message);
-        else message.error(e);
+        showDefaultErrorMessage()
         setDataToDisplay([]);
       }
       setLoading(false);

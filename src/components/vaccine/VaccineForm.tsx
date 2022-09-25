@@ -3,6 +3,10 @@ import { Button, Col, Form, Row } from 'antd';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import {
+  addArrayOfAllergy,
+  sentArrayOfAllergyToBackend,
+} from '../../axios/backendAllergy';
 import { addVaccine, editVaccine } from '../../axios/backendVaccine';
 import { PATH_VACCINE_TABLE } from '../../constants/routes';
 import { IVaccine } from '../../interface/IVaccine';
@@ -22,6 +26,7 @@ type PropType = {
 const VaccineForm = ({ initialValue }: PropType) => {
   const [loading, setloading] = useState(false);
   const vaccineInfo = useSelector((state: RootState) => state.vaccine);
+  const allergyArrayInfo = useSelector((state: RootState) => state.allergy);
 
   const navigate = useNavigate();
 
@@ -35,9 +40,17 @@ const VaccineForm = ({ initialValue }: PropType) => {
     try {
       if (initialValue.name == '') {
         const response = await addVaccine(body);
+        const responseAfterAllergy = await addArrayOfAllergy(
+          allergyArrayInfo,
+          response.data.id
+        );
         successMessage('vaccine added successfully');
       } else {
         const response = await editVaccine(body, initialValue.id);
+        const responseAfterAllergy = await sentArrayOfAllergyToBackend(
+          allergyArrayInfo,
+          initialValue.id
+        );
         successMessage('vaccine edited successfully');
       }
       navigate(PATH_VACCINE_TABLE);
@@ -82,55 +95,55 @@ const VaccineForm = ({ initialValue }: PropType) => {
           </Row>
         </div>
         <div className='form--row2'>
-        <div className='form--vaccine'>
-          <Form.Item
-            wrapperCol={{ span: 12 }}
-            label='Vaccine name'
-            name='name'
-            rules={[ruleForVaccine]}
-            hasFeedback
-            normalize={trimmer}
-          >
-            <CInputString
-              prefix={<UserOutlined />}
-              placeholder='input vaccine name'
-            />
-          </Form.Item>
+          <div className='form--vaccine'>
+            <Form.Item
+              wrapperCol={{ span: 12 }}
+              label='Vaccine name'
+              name='name'
+              rules={[ruleForVaccine]}
+              hasFeedback
+              normalize={trimmer}
+            >
+              <CInputString
+                prefix={<UserOutlined />}
+                placeholder='input vaccine name'
+              />
+            </Form.Item>
 
-          <Form.Item
-            label='Number of Doses'
-            name='numberOfDoses'
-            rules={[ruleForVaccine]}
-            hasFeedback
-          >
-            <CInputString
-              type='number'
-              prefix={<LockOutlined />}
-              placeholder='input number of doses required'
-            />
-          </Form.Item>
+            <Form.Item
+              label='Number of Doses'
+              name='numberOfDoses'
+              rules={[ruleForVaccine]}
+              hasFeedback
+            >
+              <CInputString
+                type='number'
+                prefix={<LockOutlined />}
+                placeholder='input number of doses required'
+              />
+            </Form.Item>
 
-          <Form.Item
-            label='Release Date'
-            name='releaseDate'
-            rules={[ruleForVaccine]}
-            hasFeedback
-          >
-            <CInputString
-              type='date'
-              prefix={<LockOutlined />}
-              placeholder='input vaccine release date'
-            />
-          </Form.Item>
+            <Form.Item
+              label='Release Date'
+              name='releaseDate'
+              rules={[ruleForVaccine]}
+              hasFeedback
+            >
+              <CInputString
+                type='date'
+                prefix={<LockOutlined />}
+                placeholder='input vaccine release date'
+              />
+            </Form.Item>
 
-          <Form.Item label='Description' name='description' hasFeedback>
-            <CTextArea rows={4} autoSize={{ minRows: 3, maxRows: 5 }} />
-          </Form.Item>
-        </div>
-        <div className='form--allergy'>
-          allergy table
-          <AllergyTable vaccineId={initialValue.id}/>
-        </div>
+            <Form.Item label='Description' name='description' hasFeedback>
+              <CTextArea rows={4} autoSize={{ minRows: 3, maxRows: 5 }} />
+            </Form.Item>
+          </div>
+          <div className='form--allergy'>
+            allergy table
+            <AllergyTable vaccineId={initialValue.id} />
+          </div>
         </div>
       </Form>
     </div>

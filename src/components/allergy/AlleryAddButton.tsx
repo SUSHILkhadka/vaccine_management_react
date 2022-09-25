@@ -1,19 +1,28 @@
 import { UserOutlined } from '@ant-design/icons';
 import { Button, Form, Modal } from 'antd';
-import { SetStateAction, useState } from 'react';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addNewAllergy } from '../../redux_toolkit/slices/allergySlice';
 import { ruleForVaccine } from '../../validations/formValidator';
 import { CInputString } from '../Customs/CInput/CInputString';
 import './Allergy.scss';
-type PropType = {
-  setRefresh: React.Dispatch<SetStateAction<boolean>>;
-  addAllergy: (values: any) => void;
-};
-const AllergyAddButton = ({ setRefresh, addAllergy }: PropType) => {
+// type PropType = {
+//   setRefresh: React.Dispatch<SetStateAction<boolean>>;
+//   addAllergy: (values: any) => void;
+// };
+
+const AllergyAddButton = () => {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  //   const onFinish = (values: any) => {
+  //     addAllergy(values);
+  //     setRefresh((prevState) => !prevState);
+  //     handleCancel();
+  //   };
 
   const onFinish = (values: any) => {
-    addAllergy(values);
-    setRefresh((prevState) => !prevState);
+    dispatch(addNewAllergy(values.name));
     handleCancel();
   };
 

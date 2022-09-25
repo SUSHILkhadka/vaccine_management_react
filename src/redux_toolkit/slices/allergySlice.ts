@@ -1,15 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-export type IAllergy = {
-  id: number;
-  name: string;
-  status: 'read' | 'added' | 'edited' | 'deleted';
-};
+import { IAllergy } from '../../interface/IAllergy';
 
-export const defaultValue: IAllergy[] = [];
+export const initialState: IAllergy[] = [];
 
 export const allergySlice = createSlice({
   name: 'allergyInfo',
-  initialState: defaultValue,
+  initialState: initialState,
   reducers: {
     loadAllergyList: (state, action) => {
       for (let i = 0; i < action.payload.length; i++) {
@@ -21,6 +17,7 @@ export const allergySlice = createSlice({
         state.push(action.payload[i]);
       }
     },
+    resetAllergyList: () => initialState,
     addNewAllergy: (state, action) => {
       const newAllergy: IAllergy = {
         id: -1,
@@ -49,6 +46,11 @@ export const allergySlice = createSlice({
   },
 });
 
-export const { loadAllergyList, addNewAllergy, deleteAllergy, editAllergy } =
-  allergySlice.actions;
+export const {
+  loadAllergyList,
+  resetAllergyList,
+  addNewAllergy,
+  deleteAllergy,
+  editAllergy,
+} = allergySlice.actions;
 export const allergyReducer = allergySlice.reducer;

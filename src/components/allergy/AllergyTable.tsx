@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { IAllergy } from '../../interface/IAllergy';
+import { RootState } from '../../redux_toolkit/stores/store';
 import './Allergy.scss';
 import AllergyCard from './AllergyCard';
 import AllergyAddButton from './AlleryAddButton';
@@ -8,6 +11,7 @@ type PropType = {
 const AllergyTable = ({ vaccineId }: PropType) => {
   const [loading, setLoading] = useState(false);
   const [refresh, setRefresh] = useState(false);
+  const allergyArrayInfo=useSelector((state:RootState)=>state.allergy)
 
   const [newAllergy, setNewAllergy] = useState<string[]>(['new']);
 
@@ -15,24 +19,19 @@ const AllergyTable = ({ vaccineId }: PropType) => {
     console.log(newAllergy);
   }, [refresh]);
 
-  const addAllergy = (values: any) => {
-    const temp = newAllergy;
-    temp.push(values.name);
-    setNewAllergy(temp);
-  };
+
 
   return (
     <div>
-      <AllergyAddButton setRefresh={setRefresh} addAllergy={addAllergy} />
+      <AllergyAddButton />
       <div className='allergy--list--container'>
         <>
-          {newAllergy.map((element: string, index: number) => {
+          {allergyArrayInfo.map((element: IAllergy, index: number) => {
+            if(element.status!="deleted")
             return (
               <AllergyCard
-                setRefresh={setRefresh}
-                newAllergy={newAllergy}
-                setNewAllergy={setNewAllergy}
                 index={index}
+                name={element.name} 
               />
             );
           })}
