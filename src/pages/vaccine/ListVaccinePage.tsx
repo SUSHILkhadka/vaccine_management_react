@@ -2,10 +2,11 @@ import { message, Skeleton } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { readAllVaccines } from '../../axios/backendVaccine';
 import CustomSort from '../../components/Customs/CSort/CSort';
+import CTable from '../../components/Customs/CTable/CTable';
 import { IVaccine } from '../../interface/IVaccine';
 import { sortByAscendingAll } from '../../utils/sort';
 
-export const ListContactPage: React.FC = () => {
+const ListVaccinePage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [dataOriginal, setDataOrignal] = useState<IVaccine[]>([]);
   const [dataToDisplay, setDataToDisplay] = useState<IVaccine[]>([]);
@@ -51,8 +52,9 @@ export const ListContactPage: React.FC = () => {
       {loading ? (
         <Skeleton active />
       ) : (
-        <ContactsTable Obj={dataToDisplay} reloadHandler={handleReload} />
+        <CTable Obj={dataToDisplay} reloadHandler={handleReload} />
       )}
     </div>
   );
 };
+export default ListVaccinePage

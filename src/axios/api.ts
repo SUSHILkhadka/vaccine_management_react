@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { access } from 'fs';
 import { URL_TO_BACKEND } from '../constants/common';
 import {
   getAccessToken,
@@ -43,29 +44,32 @@ instance.interceptors.response.use(
     const originalConfig = err.config;
     if (err.response) {
       //got error response
+      console.log('here')
+
       if (
         err.response.status === 401 &&
         !originalConfig._retry &&
         err.response.data.message === 'Invalid access token'
       ) {
         // Access Token was expired
+        console.log('here')
         originalConfig._retry = true;
         try {
           const rs = await instance.post('/token', {
             refreshToken: getRefreshToken(),
           });
           const { accessToken } = rs.data;
+          console.log('saving this in access tokne',accessToken)
           saveAccessToken(accessToken);
           return instance(originalConfig);
         } catch (_error) {
           return Promise.reject(_error);
         }
-      } else if (
+      }else if (
         err.response.status === 401 &&
         !originalConfig._retry &&
         err.response.data.message === 'Invalid refresh token'
-      ) {
-        //refresh token was invalid
+      )  {
         saveLoginResponse('');
       }
     }

@@ -1,18 +1,16 @@
 import { StarFilled, StarOutlined } from '@ant-design/icons';
 import { Button, Popconfirm, Space } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import image from '../../assets/github.png';
-import '../styles/Table.css';
-import { GetColumnSearchProps } from './GetColumnSearchProps';
-import React from 'react';
+import { imageURL } from '../../constants/common';
 import { IVaccine } from '../../interface/IVaccine';
+import { GetColumnSearchProps } from './GetColumnSearchProps';
 
 export const GetColumns = (
   handleFavouriteChange: (Obj: IVaccine) => void,
   handleEdit: (Obj: IVaccine) => void,
   handleDelete: (id: number) => void
 ) => {
-  const width = '10%';
+  const width = '40%';
   const columns: ColumnsType<IVaccine> = [
     {
       title: 'Photograph',
@@ -23,7 +21,7 @@ export const GetColumns = (
         return Boolean(url) ? (
           <img className='img-avatar-table' src={url} alt='Loading' />
         ) : (
-          <img className='img-avatar-table' src={image} alt='loading' />
+          <img className='img-avatar-table' src={imageURL} alt='loading' />
         );
       },
     },
@@ -32,7 +30,6 @@ export const GetColumns = (
       dataIndex: 'name',
       key: 'name',
       width: width,
-      render: (text) => <a>{text}</a>,
       ...GetColumnSearchProps('name'),
     },
     {
@@ -40,21 +37,25 @@ export const GetColumns = (
       dataIndex: 'numberOfDoses',
       key: 'numberOfDoses',
       width: width,
-      render: (text) => <a>{text}</a>,
-      ...GetColumnSearchProps('numberOfDoses'),
+      // ...GetColumnSearchProps('numberOfDoses'),
     },
     {
-      title: 'Release Data',
-      dataIndex: 'releaseData',
-      key: 'releaseData',
+      title: 'Release Date',
+      dataIndex: 'releaseDate',
+      key: 'releaseDate',
+      render: (text) => {
+        const newDatestring = text.split('T')[0];
+        console.log(text, newDatestring);
+        return <a>{newDatestring}</a>;
+      },
       width: width,
-      ...GetColumnSearchProps('releaseData'),
+      ...GetColumnSearchProps('releaseDate'),
     },
 
     {
-      title: 'Favourite',
-      dataIndex: 'favourite',
-      key: 'favourite',
+      title: 'Mandator',
+      dataIndex: 'isMandatory',
+      key: 'isMandatory',
       width: width,
       render: (text: boolean, contact) => {
         return (

@@ -1,54 +1,49 @@
-import { message, Table } from 'antd';
+import { Table } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { IContact } from '../../interface/IContact';
-import { load } from '../../redux_toolkit/slices/contactSlice';
-import { deleteContact, editContact } from '../../services/backendCallContact';
-import { getReduxContactInfoFromDatabaseData } from '../../utils/converter';
-import '../styles/Table.css';
-import { GetColumns } from '../utils/GetColumns';
-import React from 'react';
+import { deleteVaccine, editVaccine } from '../../../axios/backendVaccine';
+import { PATH_VACCINE_EDIT } from '../../../constants/routes';
+import { IVaccine } from '../../../interface/IVaccine';
+import { loadVaccine } from '../../../redux_toolkit/slices/vaccineSlice';
+import successMessage, { showDefaultErrorMessage } from '../../../utils/message';
+import { GetColumns } from '../../utils/GetColumns';
 
-type propsTypeforContactTable = {
-  Obj: IContact[];
+type propsTypeforVaccineTable = {
+  Obj: IVaccine[];
   reloadHandler: () => void;
 };
-const ContactsTable = (props: propsTypeforContactTable) => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+const CTable = (props: propsTypeforVaccineTable) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
   const handleDelete = async (id: number) => {
     try {
-      const contact = await deleteContact(id);
-      if (contact.data) {
-        message.success(`${contact.message}. Id is ${contact.data.id}`);
+      const vaccine = await deleteVaccine(id);
+      if (vaccine.data) {
+        successMessage('Vaccine deleted successfully');
       }
       props.reloadHandler();
     } catch (e: any) {
-      message.error('error deleting!! ' + e.response.data.message);
+      showDefaultErrorMessage()
     }
   };
 
-  const handleEdit = (Obj: IContact) => {
-    const dataForContactInfo = getReduxContactInfoFromDatabaseData(Obj);
-    dispatch(load(dataForContactInfo));
-    navigate('/edit');
+  const handleEdit = (vaccine: IVaccine) => {
+    dispatch(loadVaccine(vaccine));
+    navigate(PATH_VACCINE_EDIT);
   };
 
-  const handleFavouriteChange = async (Obj: IContact) => {
+  const handleFavouriteChange = async (vaccine: IVaccine) => {
     const body = {
-      ...getReduxContactInfoFromDatabaseData(Obj),
-      favourite: !Obj.favourite,
+      ...vaccine,
+      isMandatory: !vaccine.isMandatory,
     };
-
     try {
-      const contact = await editContact(body, Obj.id);
-      message.success(`${contact.message}. Id is ${contact.data.id}`);
+      const response = await editVaccine(body, vaccine.id);
+      successMessage('Vaccine edited successfully')
       props.reloadHandler();
     } catch (e: any) {
-      if (e.response)
-        message.error('error editing!! ' + e.response.data.message);
-      else message.error(e);
+      showDefaultErrorMessage();
     }
   };
 
@@ -67,4 +62,4 @@ const ContactsTable = (props: propsTypeforContactTable) => {
   );
 };
 
-export default ContactsTable;
+export default CTable;

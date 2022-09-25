@@ -4,7 +4,6 @@ import { ColumnType } from 'antd/lib/table';
 import { FilterConfirmProps } from 'antd/lib/table/interface';
 import { useRef, useState } from 'react';
 import Highlighter from 'react-highlight-words';
-import '../styles/Table.css';
 import React from 'react';
 import { IVaccine } from '../../interface/IVaccine';
 

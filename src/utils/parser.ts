@@ -40,3 +40,4 @@ export const getVaccineBodyFromForm = (values: any): IVaccineToInsert=> {
   };
   return body;
 };
+

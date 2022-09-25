@@ -12,9 +12,16 @@
     justify-content: right;
 
 }
+.form--row2{
+    display: flex;
+}
 .form--vaccine{
     background-color: rgb(122, 99, 99);
     width: 50%;
+}
+.form--allergy{
+    width: 50%;
+
 }
 
 .button--save{
