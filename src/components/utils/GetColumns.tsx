@@ -3,20 +3,22 @@ import { Button, Popconfirm, Space } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { imageURL } from '../../constants/common';
 import { IVaccine } from '../../interface/IVaccine';
+import '../../styles/Image.scss';
 import { GetColumnSearchProps } from './GetColumnSearchProps';
-import "../../styles/Image.scss"
 export const GetColumns = (
   handleFavouriteChange: (Obj: IVaccine) => void,
   handleEdit: (Obj: IVaccine) => void,
   handleDelete: (id: number) => void
 ) => {
-  const width = '40%';
+  const width = 20;
+  const widthPer = '20%';
   const columns: ColumnsType<IVaccine> = [
     {
       title: 'Photograph',
       dataIndex: 'photoUrl',
       key: 'photoUrl',
-      width: width,
+      align: 'center',
+      width: 20,
       render: (url: string) => {
         return Boolean(url) ? (
           <img className='img-avatar-table' src={url} alt='Loading' />
@@ -29,34 +31,38 @@ export const GetColumns = (
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
-      width: width,
+      align: 'center',
+      width: widthPer,
       ...GetColumnSearchProps('name'),
     },
     {
-      title: 'Number of Doses',
+      title: 'No. of Doses',
       dataIndex: 'numberOfDoses',
       key: 'numberOfDoses',
-      width: width,
-      // ...GetColumnSearchProps('numberOfDoses'),
+      align: 'center',
+      width: widthPer,
+      ...GetColumnSearchProps('numberOfDoses'),
     },
     {
       title: 'Release Date',
       dataIndex: 'releaseDate',
       key: 'releaseDate',
+      align: 'center',
       render: (text) => {
         const newDatestring = text.split('T')[0];
         console.log(text, newDatestring);
         return <a>{newDatestring}</a>;
       },
-      width: width,
-      ...GetColumnSearchProps('releaseDate'),
+      width: widthPer,
+      // ...GetColumnSearchProps('releaseDate'),
     },
 
     {
-      title: 'Mandator',
+      title: 'Mandatory',
       dataIndex: 'isMandatory',
       key: 'isMandatory',
-      width: width,
+      align: 'center',
+      width: widthPer,
       render: (text: boolean, contact) => {
         return (
           <div
@@ -76,9 +82,16 @@ export const GetColumns = (
     {
       title: 'Action',
       key: 'action',
+      width: widthPer,
+      align: 'center',
       render: (_, record) => (
         <Space size='middle'>
-          <Button onClick={() => handleEdit(record)}>Edit</Button>
+          <Button
+            className='button button--edit'
+            onClick={() => handleEdit(record)}
+          >
+            Edit
+          </Button>
           <Popconfirm
             placement='top'
             title={'Are you sure?'}
@@ -86,7 +99,7 @@ export const GetColumns = (
             okText='Yes'
             cancelText='No'
           >
-            <Button className='deleteBtn'>Delete</Button>
+            <Button className='button button--delete'>Delete</Button>
           </Popconfirm>
         </Space>
       ),

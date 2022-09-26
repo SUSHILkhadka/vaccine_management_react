@@ -1,5 +1,6 @@
 import 'antd/dist/antd.css';
 import './App.css';
+import './styles/Globals.scss'
 import { Provider } from 'react-redux';
 import AppRoutes from './router/AppRoutes';
 import { store } from './redux_toolkit/stores/store';

@@ -1,8 +1,12 @@
 @import "../../styles/Variables.scss";
 .form--vaccine--header--container{
-    background-color: $white3;
+    background-color: $white2;
     border-radius: 30px;
+    padding: 1rem;
 
+    box-shadow: 10px 10px 62px 0px rgba(68,71,151,0.75);
+    -webkit-box-shadow: 10px 10px 62px 0px rgba(68,71,151,0.75);
+    -moz-box-shadow: 10px 10px 62px 0px rgba(68,71,151,0.75);
 }
 
 .form--vaccine--header--left{
@@ -19,11 +23,12 @@
     display: flex;
 }
 .form--vaccine{
-    background-color: $white3;
+    background-color: $white2;
     width: 50%;
 }
 .form--allergy{
     width: 50%;
+
 
 }
 

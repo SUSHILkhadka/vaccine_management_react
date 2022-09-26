@@ -1,13 +1,13 @@
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Menu, Space, Typography } from 'antd';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { IVaccine } from '../../../interface/IVaccine';
 import {
   sortByAscendingFavouritesFirstThenRest,
   sortByAscendingFavouritesOnly,
   sortByDescendingAll,
 } from '../../../utils/sort';
-import React from 'react';
-import { IVaccine } from '../../../interface/IVaccine';
+import "./CSort.scss"
 
 type PropType = {
   dataOriginal: IVaccine[];
@@ -69,31 +69,31 @@ const CustomSort = ({ dataOriginal, setDataToDisplay }: PropType) => {
       items={[
         {
           key: '0',
-          label: <div>ascendingAll</div>,
+          label: <div>Ascending All</div>,
           onClick: switchToAscendingAll,
         },
         {
           key: '1',
-          label: <div>descendingAll</div>,
+          label: <div>Descending All</div>,
           onClick: switchToDescendingAll,
         },
         {
           key: '2',
-          label: <div>ascendingFavouritesOnly</div>,
+          label: <div>Ascending Favourites Only</div>,
           onClick: switchToAscendingFavouritesOnly,
         },
         {
           key: '3',
-          label: <div>ascendingFavouritesFirstThenRest</div>,
+          label: <div>Ascending Favourites First Then Rest</div>,
           onClick: switchToAscendingFavouritesFirstThenRest,
         },
       ]}
     />
   );
   return (
-    <Dropdown overlay={menu}>
+    <Dropdown className='custom--dropdown--container' overlay={menu}>
       <Typography.Link>
-        <Space className='dropdown-title'>
+        <Space className='custom--dropdown--title'>
           Sort By
           <DownOutlined />
         </Space>

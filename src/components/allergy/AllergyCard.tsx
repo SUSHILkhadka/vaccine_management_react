@@ -34,7 +34,7 @@ const AllergyCard = ({ index, name }: PropType) => {
       <div onClick={showModal} className='allergy--card'>
         {name}
         <div onClick={handleDelete} className='allergy--card--deleteicon'>
-          &#10060;
+        &#10005;
         </div>
       </div>
       <CModalAllergy open={open} handleCancel={handleCancel} edit={editParam} />

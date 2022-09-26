@@ -1,11 +1,12 @@
 import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
 import { Form } from 'antd';
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { editUser } from '../../axios/backendUser';
+import { editUser, logout } from '../../axios/backendUser';
 import { PATH_LOGIN } from '../../constants/routes';
-import { RootState } from '../../redux_toolkit/stores/store';
+import { saveLoginResponse } from '../../cookies/cookie';
+import { AppDispatch, RootState } from '../../redux_toolkit/stores/store';
 import '../../styles/Form.scss';
 import successMessage, {
   errorMessage,
@@ -13,8 +14,8 @@ import successMessage, {
 } from '../../utils/message';
 import { getEditPasswordBodyFromForm } from '../../utils/parser';
 import {
-    confirmPasswordRule,
-    newPasswordRule,
+  confirmPasswordRule,
+  newPasswordRule,
   ruleForOldPassword,
   ruleForSignIn,
 } from '../../validations/formValidator';
@@ -28,6 +29,7 @@ const SettingForm: React.FC = () => {
   const [loading, setloading] = useState(false);
   const [isChangeName, setChangeName] = useState(true);
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
 
   const negateIsChangeName = () => {
     setChangeName(!isChangeName);
@@ -47,7 +49,8 @@ const SettingForm: React.FC = () => {
       } else {
         successMessage('Name changed successfully');
       }
-
+      const res = await logout();
+      saveLoginResponse('');
       navigate(PATH_LOGIN);
     } catch (e: any) {
       if (e.response) {
@@ -58,7 +61,6 @@ const SettingForm: React.FC = () => {
     }
     setloading(false);
   };
-
 
   const newNameRule = (getFieldValue: any, value: string) => {
     if (isChangeName && getFieldValue('name') === authInfo.username) {

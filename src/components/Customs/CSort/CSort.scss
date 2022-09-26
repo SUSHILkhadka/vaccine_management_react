@@ -1,0 +1,20 @@
+@import "../../../styles/Variables.scss";
+.custom--dropdown--container{
+    background-color: $pink1;
+    padding: 3px 1rem;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+.custom--dropdown--container:hover{
+    background-color: $white1;
+
+    border: 1px solid $pink1;
+    border-radius: 20px;
+}
+
+.custom--dropdown--title{
+    color: $white1;
+}
+.custom--dropdown--title:hover{
+    color:$pink1;
+}

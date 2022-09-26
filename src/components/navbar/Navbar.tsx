@@ -42,7 +42,7 @@ const Navbar = () => {
     <div className='layout--container'>
       <div className='navbar--container'>
         <CNavlink Icon={LockOutlined} to={PATH_VACCINE_ADD}>
-          Create new Vaccine
+          Create Vaccine
         </CNavlink>
         <CNavlink Icon={MailOutlined} to={PATH_VACCINE_TABLE}>
           Vaccines
@@ -59,7 +59,7 @@ const Navbar = () => {
         >
           <p>Are you sure you want to logout?</p>
         </Modal>
-        <Button onClick={() => setIsModalVisible(true)}>Logout</Button>
+        <CNavlink Icon={MailOutlined} onClick={() => setIsModalVisible(true)}>Logout</CNavlink>
       </div>
       <Outlet />
     </div>

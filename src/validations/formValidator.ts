@@ -21,10 +21,8 @@ export const ruleForSignIn = {
     await keyValueValidator(field, value, signupSchema),
 };
 
-
 export const checkIfEmailAlreadyExists = {
   validator: async ({ field }: any, value: any) => {
-    // throw "ff"
     await keyValueValidator(field, value, signupSchema);
     try {
       await checkForEmail(value);
@@ -42,7 +40,7 @@ export const ruleForVaccine = {
 
 export const ruleForOldPassword = {
   validator: async ({ field }: any, value: any) =>
-    await keyValueValidator("password", value, signupSchema),
+    await keyValueValidator('password', value, signupSchema),
 };
 
 export const confirmPasswordRule = (getFieldValue: any, value: string) => {

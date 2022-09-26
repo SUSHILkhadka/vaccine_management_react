@@ -1,14 +1,21 @@
 @import '../../styles/Variables.scss';
 .layout--container{
     background-color: $white2;
-    padding: 1rem;
+    // padding: 1rem;
+    height: auto;
     display: flex;
+    position: relative;
 }
 .navbar--container{
-    background-color: $white1;
+    background-color: $pink2;
+    position: sticky;
+    top: 0px;
     width: 18%;
     display: flex;
     flex-direction: column;
     justify-content: left;
+    padding: 4px;
+
+    height: 100vh;
 }
 
