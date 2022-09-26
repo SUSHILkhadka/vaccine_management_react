@@ -4,7 +4,7 @@ import type { ColumnsType } from 'antd/es/table';
 import { imageURL } from '../../constants/common';
 import { IVaccine } from '../../interface/IVaccine';
 import { GetColumnSearchProps } from './GetColumnSearchProps';
-
+import "../../styles/Image.scss"
 export const GetColumns = (
   handleFavouriteChange: (Obj: IVaccine) => void,
   handleEdit: (Obj: IVaccine) => void,
@@ -14,8 +14,8 @@ export const GetColumns = (
   const columns: ColumnsType<IVaccine> = [
     {
       title: 'Photograph',
-      dataIndex: 'photograph',
-      key: 'photograph',
+      dataIndex: 'photoUrl',
+      key: 'photoUrl',
       width: width,
       render: (url: string) => {
         return Boolean(url) ? (

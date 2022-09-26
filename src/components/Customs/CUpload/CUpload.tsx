@@ -1,4 +1,4 @@
-import { message, Upload } from 'antd';
+import { message, Spin, Upload } from 'antd';
 // import ImgCrop from 'antd-img-crop';
 import type { UploadProps } from 'antd/es/upload/interface';
 import React, { useState } from 'react';
@@ -48,13 +48,13 @@ const CustomUpload: React.FC = () => {
             <img className='img--avatar' src={imageURL} alt='loading' />
           )}
         </div>
-        {/* <div className='icon--containter'>
+        <div className='icon--container'>
             {loading ? (
               <Spin />
             ) : (
               <div className='icon--plus'>+</div>
             )}
-          </div> */}
+          </div>
       </div>
     </Upload>
     // </ImgCrop>

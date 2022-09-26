@@ -1,17 +1,22 @@
 @import '../../styles/Variables.scss';
 .allergy--list--container{
     display: flex;
+    border: 1px solid $pink1;
+    border-radius: 30px;
+    height: 400px;
+    margin-left: 1rem;
 }
 .allergy--card{
-    background-color: aquamarine;
     margin: 1rem;
     display: flex;
     padding: 5px;
+    border: 1px solid $black1;
     border-radius: 20px;
 }
+
 .allergy--card--deleteicon{
 margin-left: 4px;
-border: 1px solid greenyellow;
+border: 1px solid $pink1;
 border-radius: 50%;
 
 color: $deleteButtonColor;

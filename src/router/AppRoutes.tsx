@@ -5,12 +5,14 @@ import Navbar from '../components/navbar/Navbar';
 import {
   PATH_LOGIN,
   PATH_REGISTER,
+  PATH_SETTING,
   PATH_VACCINE_ADD,
   PATH_VACCINE_EDIT,
   PATH_VACCINE_TABLE,
 } from '../constants/routes';
 import LoginPage from '../pages/login/LoginPage';
 import RegisterPage from '../pages/register/RegisterPage';
+import SettingPage from '../pages/setting/SettingPage';
 import SplashScreen from '../pages/SplashScreen';
 import AddVaccinePage from '../pages/vaccine/AddVaccinePage';
 import EditVaccinePage from '../pages/vaccine/EditVaccinePage';
@@ -40,6 +42,7 @@ function AppRoutes() {
             <Route path={PATH_VACCINE_TABLE} element={<ListVaccinePage />} />
             <Route path={PATH_VACCINE_ADD} element={<AddVaccinePage />} />
             <Route path={PATH_VACCINE_EDIT} element={<EditVaccinePage />} />
+            <Route path={PATH_SETTING} element={<SettingPage />} />
           </Route>
         </Route>
       </Routes>

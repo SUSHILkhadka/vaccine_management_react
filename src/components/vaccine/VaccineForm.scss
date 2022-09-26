@@ -1,4 +1,7 @@
+@import "../../styles/Variables.scss";
 .form--vaccine--header--container{
+    background-color: $white3;
+    border-radius: 30px;
 
 }
 
@@ -16,7 +19,7 @@
     display: flex;
 }
 .form--vaccine{
-    background-color: rgb(122, 99, 99);
+    background-color: $white3;
     width: 50%;
 }
 .form--allergy{

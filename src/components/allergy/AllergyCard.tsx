@@ -1,16 +1,8 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteAllergy } from '../../redux_toolkit/slices/allergySlice';
 import CModalAllergy from '../Customs/CModalAllergy/CModalAllergy';
-import { useState } from 'react';
 import './Allergy.scss';
-
-// type PropType = {
-//   setRefresh: React.Dispatch<SetStateAction<boolean>>;
-
-//   newAllergy: string[];
-//   setNewAllergy: React.Dispatch<SetStateAction<string[]>>;
-//   index: number;
-// };
 
 type PropType = {
   index: number;
@@ -19,10 +11,10 @@ type PropType = {
 
 const AllergyCard = ({ index, name }: PropType) => {
   const dispatch = useDispatch();
-  const editParam={
-    index:index,
-    name:name,
-  }
+  const editParam = {
+    index: index,
+    name: name,
+  };
   const [open, setOpen] = useState(false);
 
   const showModal = () => {
@@ -37,18 +29,16 @@ const AllergyCard = ({ index, name }: PropType) => {
     dispatch(deleteAllergy(index));
   };
 
-
   return (
     <div>
-    <div onClick={showModal} className='allergy--card'>
-      {name}
-      <div onClick={handleDelete} className='allergy--card--deleteicon'>
-      &#10060;
+      <div onClick={showModal} className='allergy--card'>
+        {name}
+        <div onClick={handleDelete} className='allergy--card--deleteicon'>
+          &#10060;
+        </div>
       </div>
+      <CModalAllergy open={open} handleCancel={handleCancel} edit={editParam} />
     </div>
-      <CModalAllergy open={open} handleCancel={handleCancel} edit={editParam}/>
-      </div>
-
   );
 };
 

@@ -6,6 +6,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { logout } from '../../axios/backendUser';
 import {
   PATH_LOGIN,
+  PATH_SETTING,
   PATH_VACCINE_ADD,
   PATH_VACCINE_TABLE,
 } from '../../constants/routes';
@@ -46,9 +47,10 @@ const Navbar = () => {
         <CNavlink Icon={MailOutlined} to={PATH_VACCINE_TABLE}>
           Vaccines
         </CNavlink>
-        {/* <CNavlink Icon={UserOutlined} to={PATH_VACCINE_ADD}>
-          ff
-        </CNavlink> */}
+        <CNavlink Icon={MailOutlined} to={PATH_SETTING}>
+          Settings
+        </CNavlink>
+
         <Modal
           title='Logout'
           open={isModalVisible}

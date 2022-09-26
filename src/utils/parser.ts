@@ -19,15 +19,7 @@ export const getLoginBodyFromForm = (values: any) => {
   return body;
 };
 
-export const getEditBodyFromForm = (values: any) => {
-  const body = {
-    name: values.name.trim(),
-    password: values.newPassword1,
-    confirmPassword: values.newPassword2,
-    oldPassword: values.oldPassword,
-  };
-  return body;
-};
+
 
 export const getVaccineBodyFromForm = (values: any): IVaccineToInsert=> {
   const body = {
@@ -37,6 +29,15 @@ export const getVaccineBodyFromForm = (values: any): IVaccineToInsert=> {
     releaseDate: values.releaseDate,
     isMandatory: values.isMandatory,
     photoUrl:'',
+  };
+  return body;
+};
+
+export const getEditPasswordBodyFromForm = (values: any)=> {
+  const body = {
+    name: values.name,
+    oldPassword: values.oldPassword,
+    password: values.password?values.password:values.oldPassword,
   };
   return body;
 };

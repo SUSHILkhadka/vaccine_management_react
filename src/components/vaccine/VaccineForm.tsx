@@ -94,7 +94,7 @@ const VaccineForm = ({ initialValue }: PropType) => {
         <div className='form--row2'>
           <div className='form--vaccine'>
             <Form.Item
-              wrapperCol={{ span: 12 }}
+              wrapperCol={{ span: 24 }}
               label='Vaccine name'
               name='name'
               rules={[ruleForVaccine]}
@@ -138,7 +138,6 @@ const VaccineForm = ({ initialValue }: PropType) => {
             </Form.Item>
           </div>
           <div className='form--allergy'>
-            allergy table
             <AllergyTable />
           </div>
         </div>

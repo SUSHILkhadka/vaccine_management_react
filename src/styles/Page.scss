@@ -1,7 +1,16 @@
+@import "./Variables.scss";
 .page--addvaccine{
-    background-color: firebrick;
+    background-color: $white2;
     width:100%;
-
     margin:1rem;
 
+}
+
+.page--setting{
+    background-color: $white2;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin:1rem;
 }

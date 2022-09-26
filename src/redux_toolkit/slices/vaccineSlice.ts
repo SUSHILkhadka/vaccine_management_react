@@ -5,8 +5,8 @@ export const initalValue: IVaccine = {
   id: 0,
   name: '',
   description: '',
-  numberOfDoses: 0,
-  releaseDate: new Date(),
+  numberOfDoses: 1,
+  releaseDate: new Date().toLocaleDateString(),
   photoUrl: '',
   isMandatory: false,
 };

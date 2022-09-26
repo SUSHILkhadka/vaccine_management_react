@@ -3,7 +3,7 @@ export interface IVaccine {
     name: string;
     description: string;
     numberOfDoses: number;
-    releaseDate: Date;
+    releaseDate: string;
     photoUrl: string;
     isMandatory: boolean;
   }

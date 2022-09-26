@@ -1,6 +1,6 @@
+@import '../../../styles/Variables.scss';
 $size:160px;
 .customphoto--container{
-    // background-color: crimson;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,23 +15,25 @@ $size:160px;
     height: $size;
     width: $size;
 }
-.icon--container{
-    position: relative;
-    background-color: black;
-    display: flex;
-    align-self: center;
-    width: 100%;
-    color: white;
-    z-index: 22;
-}
-.icon--plus{
-    color: white;
-    font-size: 50px;
-
-}
 
 .img--avatar{
     border-radius: 100px;
     width: $size;
     height: $size;
 }
+
+.icon--container{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    width: 100%;
+    color: white;
+    z-index: 2;
+}
+.icon--plus{
+    font-size: 80px;
+    opacity: 0.5;
+
+
+}
+
