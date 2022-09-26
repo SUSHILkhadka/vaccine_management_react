@@ -32,7 +32,6 @@ const VaccineForm = ({ initialValue }: PropType) => {
 
   const onFinish = async (values: any) => {
     setloading(true);
-    console.log(values);
     const body = {
       ...getVaccineBodyFromForm(values),
       photoUrl: vaccineInfo.photoUrl,
@@ -64,8 +63,6 @@ const VaccineForm = ({ initialValue }: PropType) => {
     const startTrimmedValue = value.trimStart();
     return startTrimmedValue;
   };
-
-  console.log('in form ', initialValue);
 
   return (
     <div>
@@ -142,7 +139,7 @@ const VaccineForm = ({ initialValue }: PropType) => {
           </div>
           <div className='form--allergy'>
             allergy table
-            <AllergyTable vaccineId={initialValue.id} />
+            <AllergyTable />
           </div>
         </div>
       </Form>

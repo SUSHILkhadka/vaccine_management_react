@@ -14,7 +14,7 @@ export const allergySlice = createSlice({
           name: action.payload[i].name,
           status: 'read',
         };
-        state.push(action.payload[i]);
+        state.push(temp);
       }
     },
     resetAllergyList: () => initialState,
@@ -31,6 +31,7 @@ export const allergySlice = createSlice({
       if (state[index].id == -1) {
         const temp = state;
         temp.splice(action.payload, 1);
+        console.log('in delete ', temp);
         state = temp;
       } else {
         state[index].status = 'deleted';
@@ -38,7 +39,10 @@ export const allergySlice = createSlice({
     },
     editAllergy: (state, action) => {
       const index = action.payload.index;
-      state[index].name = action.payload.name;
+      const name = action.payload.name;
+
+      state[index].name = name;
+
       if (state[index].id != -1) {
         state[index].status = 'edited';
       }

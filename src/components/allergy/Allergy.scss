@@ -1,11 +1,29 @@
+@import '../../styles/Variables.scss';
 .allergy--list--container{
     display: flex;
 }
 .allergy--card{
     background-color: aquamarine;
     margin: 1rem;
+    display: flex;
+    padding: 5px;
+    border-radius: 20px;
+}
+.allergy--card--deleteicon{
+margin-left: 4px;
+border: 1px solid greenyellow;
+border-radius: 50%;
+
+color: $deleteButtonColor;
+background-color: $deleteBgColor;
+}
+.allergy--card--deleteicon:hover{
+    cursor: pointer;
+    color: $deleteBgColor;
+    background-color: $deleteButtonColor;
 }
 .footer--buttons{
     display: flex;
     justify-content: space-around;
 }
+
