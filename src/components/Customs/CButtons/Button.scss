@@ -16,3 +16,23 @@
     color:$pink1;
     
 }
+
+.button--edit{
+    margin: 0rem;
+    background-color: $editButtonColor;
+    border: 1px solid $editButtonColor;
+
+}
+.button--edit:hover{
+    border: 1px solid $editButtonColor;
+    color:$editButtonColor
+}
+.button--delete{
+    margin:0rem;
+    border: 1px solid $deleteButtonColor;
+    background-color: $deleteButtonColor;
+}
+.button--delete:hover{
+    border: 1px solid $deleteButtonColor;
+    color:$deleteButtonColor
+}

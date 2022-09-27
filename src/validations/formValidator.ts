@@ -21,10 +21,8 @@ export const ruleForSignIn = {
     await keyValueValidator(field, value, signupSchema),
 };
 
-
 export const checkIfEmailAlreadyExists = {
   validator: async ({ field }: any, value: any) => {
-    // throw "ff"
     await keyValueValidator(field, value, signupSchema);
     try {
       await checkForEmail(value);
@@ -42,19 +40,11 @@ export const ruleForVaccine = {
 
 export const ruleForOldPassword = {
   validator: async ({ field }: any, value: any) =>
-    await keyValueValidator("password", value, signupSchema),
-};
-
-export const confirmPasswordRule = (getFieldValue: any, value: string) => {
-  if (!value || getFieldValue('password') === value) {
-    return Promise.resolve();
-  } else {
-    return Promise.reject(new Error('Password do not match'));
-  }
+    await keyValueValidator('password', value, signupSchema),
 };
 
 export const newPasswordRule = (getFieldValue: any, value: string) => {
-  if (!value || getFieldValue('oldPassword') !== value) {
+  if ( getFieldValue('oldPassword') !== value) {
     return Promise.resolve();
   } else {
     return Promise.reject(
@@ -62,3 +52,13 @@ export const newPasswordRule = (getFieldValue: any, value: string) => {
     );
   }
 };
+
+export const confirmPasswordRule = (getFieldValue: any, value: string) => {
+  if ( getFieldValue('password') === value) {
+    return Promise.resolve();
+  } else {
+    return Promise.reject(new Error('Password do not match'));
+  }
+};
+
+

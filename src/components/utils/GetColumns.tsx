@@ -3,25 +3,36 @@ import { Button, Popconfirm, Space } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { imageURL } from '../../constants/common';
 import { IVaccine } from '../../interface/IVaccine';
+import '../../styles/Image.scss';
+import '../Customs/CTable/CTable.scss'
+import {
+  compareIsMandatory,
+  compareName,
+  compareNumberOfDoses,
+  compareReleaseDate,
+} from '../../utils/sort';
 import { GetColumnSearchProps } from './GetColumnSearchProps';
-import "../../styles/Image.scss"
 export const GetColumns = (
   handleFavouriteChange: (Obj: IVaccine) => void,
   handleEdit: (Obj: IVaccine) => void,
   handleDelete: (id: number) => void
 ) => {
-  const width = '40%';
+  const width = 20;
+  const widthPer = '20%';
   const columns: ColumnsType<IVaccine> = [
     {
       title: 'Photograph',
       dataIndex: 'photoUrl',
       key: 'photoUrl',
-      width: width,
+      align: 'center',
+      width: 20,
       render: (url: string) => {
-        return Boolean(url) ? (
-          <img className='img-avatar-table' src={url} alt='Loading' />
-        ) : (
-          <img className='img-avatar-table' src={imageURL} alt='loading' />
+        return (
+          <img
+            className='img-avatar-table'
+            src={Boolean(url) ? url : imageURL}
+            alt='Loading'
+          />
         );
       },
     },
@@ -29,34 +40,55 @@ export const GetColumns = (
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
-      width: width,
+      align: 'center',
+      width: widthPer,
+      sorter: {
+        compare: compareName,
+        multiple: 3,
+      },
+      defaultSortOrder:"ascend" ,
       ...GetColumnSearchProps('name'),
     },
     {
-      title: 'Number of Doses',
+      title: 'No. of Doses',
       dataIndex: 'numberOfDoses',
       key: 'numberOfDoses',
-      width: width,
-      // ...GetColumnSearchProps('numberOfDoses'),
+      align: 'center',
+      width: widthPer,
+      sorter: {
+        compare: compareNumberOfDoses,
+        multiple: 2,
+      },
+      ...GetColumnSearchProps('numberOfDoses'),
     },
     {
       title: 'Release Date',
       dataIndex: 'releaseDate',
       key: 'releaseDate',
+      align: 'center',
+      width: widthPer,
+      ...GetColumnSearchProps('releaseDate'),
+      sorter: {
+        compare: compareReleaseDate,
+        multiple: 1,
+      },
       render: (text) => {
         const newDatestring = text.split('T')[0];
-        console.log(text, newDatestring);
-        return <a>{newDatestring}</a>;
+        return <div>{newDatestring}</div>;
       },
-      width: width,
-      ...GetColumnSearchProps('releaseDate'),
     },
 
     {
-      title: 'Mandator',
+      title: 'Mandatory',
       dataIndex: 'isMandatory',
       key: 'isMandatory',
-      width: width,
+      align: 'center',
+      width: widthPer,
+      sorter: {
+        compare: compareIsMandatory,
+        multiple: 4,
+      },
+      defaultSortOrder:"ascend" ,
       render: (text: boolean, contact) => {
         return (
           <div
@@ -76,9 +108,16 @@ export const GetColumns = (
     {
       title: 'Action',
       key: 'action',
+      width: widthPer,
+      align: 'center',
       render: (_, record) => (
         <Space size='middle'>
-          <Button onClick={() => handleEdit(record)}>Edit</Button>
+          <Button
+            className='button button--edit'
+            onClick={() => handleEdit(record)}
+          >
+            Edit
+          </Button>
           <Popconfirm
             placement='top'
             title={'Are you sure?'}
@@ -86,7 +125,7 @@ export const GetColumns = (
             okText='Yes'
             cancelText='No'
           >
-            <Button className='deleteBtn'>Delete</Button>
+            <Button className='button button--delete'>Delete</Button>
           </Popconfirm>
         </Space>
       ),

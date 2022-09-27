@@ -14,19 +14,6 @@ export async function addAllergy(body: any): Promise<any> {
   return response.data;
 }
 
-export async function addArrayOfAllergy(
-  array: IAllergy[],
-  vaccineId: number
-): Promise<any> {
-  for (let i = 0; i < array.length; i++) {
-    const body = {
-      name: array[i].name,
-      vaccineId: vaccineId,
-    };
-    const response = await api.post(routeName, body);
-  }
-}
-
 /**
  *
  * @param vaccineId id of vaccine whose allergies are to be listed
@@ -60,10 +47,25 @@ export async function deleteAllergy(allergyId: number): Promise<any> {
   return response.data;
 }
 
+export async function addArrayOfAllergy(
+  array: IAllergy[],
+  vaccineId: number
+): Promise<any> {
+  for (let i = 0; i < array.length; i++) {
+    const body = {
+      name: array[i].name,
+      vaccineId: vaccineId,
+    };
+    const response = await addAllergy(body);
+  }
+}
+
 export async function sentArrayOfAllergyToBackend(
   array: IAllergy[],
   vaccineId: number
 ): Promise<any> {
+  let responseArray=[]
+
   for (let i = 0; i < array.length; i++) {
     const body = {
       id: array[i].id,
@@ -71,12 +73,18 @@ export async function sentArrayOfAllergyToBackend(
       vaccineId: vaccineId,
     };
 
+
     if (array[i].status === 'added') {
-      const response = await api.post(routeName, body);
+      const response = await addAllergy(body);
+      responseArray.push(response.data)
     } else if (array[i].status === 'edited') {
-      const resposne = updateAllergy(body);
+      const response =await updateAllergy(body);
+      responseArray.push(response.data)
+
     } else if (array[i].status === 'deleted') {
-      const response = deleteAllergy(body.id);
+      const response =await deleteAllergy(body.id);
+      responseArray.push(response.data)
     }
   }
+  return responseArray;
 }

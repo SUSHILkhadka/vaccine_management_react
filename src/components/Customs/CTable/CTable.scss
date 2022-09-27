@@ -1,0 +1,31 @@
+@import "../../../styles/Variables.scss";
+.table--container{
+    margin: 1rem 0;
+    border-radius: 30px;
+}
+
+  .table--empty--container{
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $pink1;
+  }
+
+  .actual--table{
+    background-color: white;
+    border-radius: 10px;
+
+    box-shadow: 10px 10px 62px 0px rgba(68,71,151,0.75);
+    -webkit-box-shadow: 10px 10px 62px 0px rgba(68,71,151,0.75);
+    -moz-box-shadow: 10px 10px 62px 0px rgba(68,71,151,0.75);
+  }
+
+  .table-favourite{
+    border-radius: 50%;
+    
+  }
+  .table-favourite:hover{
+    border-radius: 50%;
+    cursor: pointer;
+  }

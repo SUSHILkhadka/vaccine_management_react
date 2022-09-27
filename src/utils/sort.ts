@@ -1,45 +1,40 @@
 import { IVaccine } from '../interface/IVaccine';
 
-export const sortByAscendingAll = (dataOriginal: IVaccine[]) => {
-  const temp = JSON.parse(JSON.stringify(dataOriginal));
-  temp.sort(function (a: IVaccine, b: IVaccine) {
-    const keyA = a.name;
-    const keyB = b.name;
-    if (keyA < keyB) return -1;
-    if (keyA > keyB) return 1;
-    return 0;
-  });
-  return temp;
+
+
+export const compareName = (a: IVaccine, b: IVaccine) => {
+  const keyA = a.name.toLowerCase();
+  const keyB = b.name.toLowerCase();
+  if (keyA < keyB) return -1;
+  if (keyA > keyB) return 1;
+  return 0;
 };
-export const sortByDescendingAll = (dataOriginal: IVaccine[]) => {
-  const temp = JSON.parse(JSON.stringify(dataOriginal));
-  temp.sort(function (a: IVaccine, b: IVaccine) {
-    const keyA = a.name;
-    const keyB = b.name;
-    if (keyA < keyB) return 1;
-    if (keyA > keyB) return -1;
-    return 0;
-  });
-  return temp;
+export const compareReleaseDate = (a: IVaccine, b: IVaccine) => {
+  const keyA = a.releaseDate.toLowerCase();
+  const keyB = b.releaseDate.toLowerCase();
+  if (keyA < keyB) return -1;
+  if (keyA > keyB) return 1;
+  return 0;
+};
+export const compareNumberOfDoses = (a: IVaccine, b: IVaccine) => {
+  const keyA = a.numberOfDoses;
+  const keyB = b.numberOfDoses;
+  return keyA - keyB;
 };
 
-export const sortByAscendingFavouritesOnly = (dataOriginal: IVaccine[]) => {
+export const compareIsMandatory = (a: IVaccine, b: IVaccine) => {
+  const keyA = a.isMandatory;
+  const keyB = b.isMandatory;
+  if (keyA > keyB) return -1;
+  if (keyA < keyB) return 1;
+  return 0;
+};
+
+
+export const sortByFavouritesOnly = (dataOriginal: IVaccine[]) => {
   const listOfFavourite: IVaccine[] = [];
   dataOriginal.forEach((element: IVaccine) => {
     if (element.isMandatory) listOfFavourite.push(element);
   });
   return listOfFavourite;
-};
-
-export const sortByAscendingFavouritesFirstThenRest = (
-  dataOriginal: IVaccine[]
-) => {
-  const listOfFavourite: IVaccine[] = [];
-  const listofNonFavourite: IVaccine[] = [];
-  dataOriginal.forEach((element: IVaccine) => {
-    if (element.isMandatory) listOfFavourite.push(element);
-    if (!element.isMandatory) listofNonFavourite.push(element);
-  });
-  const finalConcatenatedArray = listOfFavourite.concat(listofNonFavourite);
-  return finalConcatenatedArray;
 };

@@ -3,6 +3,7 @@ import { Form } from 'antd';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import IMAGE_LOGO2 from '../../assets/logo2.jpg';
 import { login } from '../../axios/backendUser';
 import { PATH_REGISTER, PATH_ROOT } from '../../constants/routes';
 import { saveLoginResponse } from '../../cookies/cookie';
@@ -34,7 +35,7 @@ const LoginForm: React.FC = () => {
       navigate(PATH_ROOT, { replace: true });
       successMessage(response.message);
     } catch (e: any) {
-      if (e.response) {
+      if (e.response.data) {
         errorMessage(e.response.data.message);
       } else {
         showDefaultErrorMessage();
@@ -46,7 +47,12 @@ const LoginForm: React.FC = () => {
 
   return (
     <div className='form'>
+      <div className='login--image--containter'>
+        <img className='img--logo' src={IMAGE_LOGO2}></img>
+        <div className='form--login--text'>Vaccine Management</div>
+      </div>
       <div className='form--login--header'>LogIn</div>
+
       <Form
         layout='vertical'
         labelCol={{ offset: 1, span: 24 }}
@@ -78,7 +84,7 @@ const LoginForm: React.FC = () => {
         </Form.Item>
 
         <Form.Item wrapperCol={{ offset: 0, span: 24 }}>
-          <CButtonLogin loading={false} htmlType='submit'>
+          <CButtonLogin loading={loading} htmlType='submit'>
             Login
           </CButtonLogin>
         </Form.Item>

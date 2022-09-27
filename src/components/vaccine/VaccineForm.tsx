@@ -92,7 +92,7 @@ const VaccineForm = ({ initialValue }: PropType) => {
           </Row>
         </div>
         <div className='form--row2'>
-          <div className='form--vaccine'>
+          <div className='form form--vaccine'>
             <Form.Item
               wrapperCol={{ span: 24 }}
               label='Vaccine name'

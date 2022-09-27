@@ -5,16 +5,18 @@ import { deleteVaccine, editVaccine } from '../../../axios/backendVaccine';
 import { PATH_VACCINE_EDIT } from '../../../constants/routes';
 import { IVaccine } from '../../../interface/IVaccine';
 import { loadVaccine } from '../../../redux_toolkit/slices/vaccineSlice';
-import successMessage, { showDefaultErrorMessage } from '../../../utils/message';
+import successMessage, {
+  showDefaultErrorMessage,
+} from '../../../utils/message';
 import { GetColumns } from '../../utils/GetColumns';
-
+import './CTable.scss';
 type propsTypeforVaccineTable = {
   Obj: IVaccine[];
   reloadHandler: () => void;
 };
 const CTable = (props: propsTypeforVaccineTable) => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleDelete = async (id: number) => {
     try {
@@ -24,7 +26,7 @@ const CTable = (props: propsTypeforVaccineTable) => {
       }
       props.reloadHandler();
     } catch (e: any) {
-      showDefaultErrorMessage()
+      showDefaultErrorMessage();
     }
   };
 
@@ -40,7 +42,7 @@ const CTable = (props: propsTypeforVaccineTable) => {
     };
     try {
       const response = await editVaccine(body, vaccine.id);
-      successMessage('Vaccine edited successfully')
+      successMessage('Vaccine edited successfully');
       props.reloadHandler();
     } catch (e: any) {
       showDefaultErrorMessage();
@@ -49,14 +51,24 @@ const CTable = (props: propsTypeforVaccineTable) => {
 
   const columns = GetColumns(handleFavouriteChange, handleEdit, handleDelete);
 
+  const empty = (
+    <div className='table--empty--container'>Vaccine List is empty</div>
+  );
+
   return (
-    <div className='table-container'>
+    <div className='table--container'>
       <Table
-        className='actual-table'
+        locale={{ emptyText: empty }}
+        className='actual--table'
         columns={columns}
         dataSource={props.Obj}
         rowKey='id'
         data-testid='table'
+        pagination={{
+          position: ['bottomRight'],
+          responsive: true,
+          pageSize: 4,
+        }}
       />
     </div>
   );

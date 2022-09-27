@@ -1,5 +1,5 @@
 import { message, Spin, Upload } from 'antd';
-// import ImgCrop from 'antd-img-crop';
+import ImgCrop from 'antd-img-crop';
 import type { UploadProps } from 'antd/es/upload/interface';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,18 +7,29 @@ import { uploadToCloud } from '../../../axios/backendUpload';
 import { imageURL } from '../../../constants/common';
 import { changePhotoUrl } from '../../../redux_toolkit/slices/vaccineSlice';
 import { RootState } from '../../../redux_toolkit/stores/store';
+import { resizeFile } from '../../../utils/imageCompressor';
 import './CUpload.scss';
+
 const CustomUpload: React.FC = () => {
   const vaccineInfo = useSelector((state: RootState) => state.vaccine);
+  const dispatch = useDispatch();
 
   const [loading, setloading] = useState(false);
-  const dispatch = useDispatch();
 
   const props: UploadProps = {
     beforeUpload: async (file) => {
+      if (file.type.split('/')[0] != 'image') {
+        message.error('File type error. Please select image');
+        return false;
+      }
+
       setloading(true);
       const formData = new FormData();
-      formData.append('keyForFileObject', file);
+      console.log('before', file);
+      const resizedFile = (await resizeFile(file)) as File;
+      console.log('after', resizedFile);
+
+      formData.append('keyForFileObject', resizedFile);
       try {
         const response = await uploadToCloud(formData);
         dispatch(changePhotoUrl(response.url));
@@ -34,29 +45,24 @@ const CustomUpload: React.FC = () => {
   };
   return (
     // <ImgCrop rotate>
-
-    <Upload {...props}>
-      <div className='customphoto--container'>
-        <div className='image--container'>
-          {Boolean(vaccineInfo.photoUrl) ? (
-            <img
-              className='img--avatar'
-              src={vaccineInfo.photoUrl}
-              alt='Loading'
-            />
-          ) : (
-            <img className='img--avatar' src={imageURL} alt='loading' />
-          )}
-        </div>
-        <div className='icon--container'>
-            {loading ? (
-              <Spin />
+      <Upload {...props}>
+        <div className='customphoto--container'>
+          <div className='image--container'>
+            {Boolean(vaccineInfo.photoUrl) ? (
+              <img
+                className='img--avatar'
+                src={vaccineInfo.photoUrl}
+                alt='Loading'
+              />
             ) : (
-              <div className='icon--plus'>+</div>
+              <img className='img--avatar' src={imageURL} alt='loading' />
             )}
           </div>
-      </div>
-    </Upload>
+          <div className='icon--container'>
+            {loading ? <Spin /> : <div className='icon--plus'>+</div>}
+          </div>
+        </div>
+      </Upload>
     // </ImgCrop>
   );
 };

@@ -10,32 +10,34 @@ import '../../allergy/Allergy.scss';
 import { CInputString } from '../../Customs/CInput/CInputString';
 
 type EditParam = {
-  index: number;
-  name: string;
-};
-
-type AddParam = {
-  name: undefined;
+  index?: number;
+  name: string | undefined;
 };
 
 type PropType = {
   open: boolean;
   handleCancel: () => void;
-  edit: EditParam | AddParam;
+  edit: EditParam;
 };
 
 const CModalAllergy = ({ open, handleCancel, edit }: PropType) => {
   const dispatch = useDispatch();
 
   const onFinish = (values: any) => {
+    console.log('without trim ', values.name, '.');
+      console.log('with trim ', values.name.trim(), '.');
     if (edit.name && values.name != edit.name) {
-      dispatch(editAllergy({...edit,name:values.name}));
-    } 
-    if(!edit.name) {
-      dispatch(addNewAllergy(values.name));
+      console.log('edit',edit)
+      dispatch(editAllergy({ ...edit, name: values.name.trim() }));
+      console.log('edit after',{ ...edit, name: values.name.trim() })
+
+    }
+    if (!edit.name) {
+      console.log('add')
+
+      dispatch(addNewAllergy(values.name.trim()));
     }
     handleCancel();
-
   };
 
   const trimmer = (value: string) => {
@@ -46,6 +48,7 @@ const CModalAllergy = ({ open, handleCancel, edit }: PropType) => {
   const initialValue = {
     name: edit.name,
   };
+
   return (
     <div>
       <Modal
