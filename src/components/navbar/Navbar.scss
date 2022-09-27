@@ -1,0 +1,13 @@
+.layout--container{
+    background-color: aqua;
+    padding: 1rem;
+    display: flex;
+}
+.navbar--container{
+    background-color: bisque;
+    width: 18%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
