@@ -43,16 +43,8 @@ export const ruleForOldPassword = {
     await keyValueValidator('password', value, signupSchema),
 };
 
-export const confirmPasswordRule = (getFieldValue: any, value: string) => {
-  if (!value || getFieldValue('password') === value) {
-    return Promise.resolve();
-  } else {
-    return Promise.reject(new Error('Password do not match'));
-  }
-};
-
 export const newPasswordRule = (getFieldValue: any, value: string) => {
-  if (!value || getFieldValue('oldPassword') !== value) {
+  if ( getFieldValue('oldPassword') !== value) {
     return Promise.resolve();
   } else {
     return Promise.reject(
@@ -60,3 +52,13 @@ export const newPasswordRule = (getFieldValue: any, value: string) => {
     );
   }
 };
+
+export const confirmPasswordRule = (getFieldValue: any, value: string) => {
+  if ( getFieldValue('password') === value) {
+    return Promise.resolve();
+  } else {
+    return Promise.reject(new Error('Password do not match'));
+  }
+};
+
+

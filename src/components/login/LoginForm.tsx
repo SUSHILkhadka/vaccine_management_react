@@ -34,7 +34,7 @@ const LoginForm: React.FC = () => {
       navigate(PATH_ROOT, { replace: true });
       successMessage(response.message);
     } catch (e: any) {
-      if (e.response) {
+      if (e.response.data) {
         errorMessage(e.response.data.message);
       } else {
         showDefaultErrorMessage();

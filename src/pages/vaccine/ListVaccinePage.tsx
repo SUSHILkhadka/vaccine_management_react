@@ -29,7 +29,7 @@ const ListVaccinePage: React.FC = () => {
           setDataToDisplay(sortedArray);
         }
       } catch (e: any) {
-        if(e.response)errorMessage(e.response.data.message)
+        if(e.response.data)errorMessage(e.response.data.message)
         else showDefaultErrorMessage()
         setDataToDisplay([]);
       }

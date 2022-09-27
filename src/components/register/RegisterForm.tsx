@@ -28,9 +28,6 @@ const RegisterForm: React.FC = () => {
       navigate(PATH_LOGIN);
     } catch (e: any) {
       errorMessage("Something went wrong. Please try later")
-
-      // if (e.response) errorMessage(e.response.data.message);
-      // else errorMessage(e);
     }
     setloading(false);
   };
@@ -58,7 +55,7 @@ const RegisterForm: React.FC = () => {
         wrapperCol={{ span: 24 }}
         onFinish={onFinish}
         autoComplete='off'
-        initialValues={defaultValue}
+        // initialValues={defaultValue}
         requiredMark={false}
       >
         <Form.Item
@@ -77,7 +74,6 @@ const RegisterForm: React.FC = () => {
         <Form.Item
           label='Email'
           name='email'
-          // rules={[ruleForSignIn]}
           rules={[checkIfEmailAlreadyExists]}
           hasFeedback
           normalize={trimmer}
