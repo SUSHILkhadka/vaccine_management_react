@@ -1,104 +1,56 @@
-import { DownOutlined } from '@ant-design/icons';
-import { Dropdown, Menu, Space, Typography } from 'antd';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { IVaccine } from '../../../interface/IVaccine';
-import {
-  sortByAscendingFavouritesFirstThenRest,
-  sortByAscendingFavouritesOnly,
-  sortByDescendingAll,
-} from '../../../utils/sort';
-import "./CSort.scss"
+import { sortByFavouritesOnly } from '../../../utils/sort';
+import './CSort.scss';
 
 type PropType = {
   dataOriginal: IVaccine[];
   setDataToDisplay: Dispatch<SetStateAction<IVaccine[]>>;
 };
 const CustomSort = ({ dataOriginal, setDataToDisplay }: PropType) => {
-  const [sortMethodId, setSortMethodId] = useState<number>(3);
-
+  const [mandatoryOnly, setMandatoryOnly] = useState<boolean>(false);
   useEffect(() => {
-    switch (sortMethodId) {
-      case 0:
-        switchToAscendingAll();
-        break;
-      case 1:
-        switchToDescendingAll();
-        break;
-      case 2:
-        switchToAscendingFavouritesOnly();
-        break;
-      default:
-        switchToAscendingFavouritesFirstThenRest();
-    }
+    if (mandatoryOnly) switchToFavouritesOnly();
   }, [dataOriginal]);
 
-  const switchToAscendingAll = () => {
+  const switchToAll = () => {
     const temp = Object.create(dataOriginal);
     setDataToDisplay(temp);
-    setSortMethodId(0);
   };
 
-  const switchToDescendingAll = () => {
-    const temp = sortByDescendingAll(dataOriginal);
-    setDataToDisplay(temp);
-    setSortMethodId(1);
-  };
-  const switchToAscendingFavouritesOnly = () => {
-    const listOfFavourite: IVaccine[] =
-      sortByAscendingFavouritesOnly(dataOriginal);
+  const switchToFavouritesOnly = () => {
+    const listOfFavourite: IVaccine[] = sortByFavouritesOnly(dataOriginal);
     if (listOfFavourite.length > 0) {
       setDataToDisplay(listOfFavourite);
     } else {
       setDataToDisplay([]);
     }
-    setSortMethodId(2);
   };
 
-  const switchToAscendingFavouritesFirstThenRest = () => {
-    const finalConcatenatedArray =
-      sortByAscendingFavouritesFirstThenRest(dataOriginal);
-    if (finalConcatenatedArray.length > 0) {
-      setDataToDisplay(finalConcatenatedArray);
+  const handleChange = () => {
+    if (mandatoryOnly) {
+      switchToAll();
+      setMandatoryOnly(false);
+    } else {
+      switchToFavouritesOnly();
+      setMandatoryOnly(true);
     }
-    setSortMethodId(3);
   };
-  const menu = (
-    <Menu
-      selectable
-      defaultSelectedKeys={[`${sortMethodId}`]}
-      items={[
-        {
-          key: '0',
-          label: <div>Ascending All</div>,
-          onClick: switchToAscendingAll,
-        },
-        {
-          key: '1',
-          label: <div>Descending All</div>,
-          onClick: switchToDescendingAll,
-        },
-        {
-          key: '2',
-          label: <div>Ascending Favourites Only</div>,
-          onClick: switchToAscendingFavouritesOnly,
-        },
-        {
-          key: '3',
-          label: <div>Ascending Favourites First Then Rest</div>,
-          onClick: switchToAscendingFavouritesFirstThenRest,
-        },
-      ]}
-    />
-  );
+
   return (
-    <Dropdown className='custom--dropdown--container' overlay={menu}>
-      <Typography.Link>
-        <Space className='custom--dropdown--title'>
-          Sort By
-          <DownOutlined />
-        </Space>
-      </Typography.Link>
-    </Dropdown>
+    <div className='custom--dropdown--container'>
+      <div onClick={handleChange} className='custom--dropdown--button'>
+        <div>
+          {mandatoryOnly && (
+            <span className='custom--dropdown--span'>&#10003;</span>
+          )}
+          {!mandatoryOnly && (
+            <span className='custom--dropdown--span'>&#10005;</span>
+          )}
+          Show Favourites Only
+        </div>
+      </div>
+    </div>
   );
 };
 export default CustomSort;

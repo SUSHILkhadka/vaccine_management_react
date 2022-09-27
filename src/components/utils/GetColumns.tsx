@@ -4,6 +4,13 @@ import type { ColumnsType } from 'antd/es/table';
 import { imageURL } from '../../constants/common';
 import { IVaccine } from '../../interface/IVaccine';
 import '../../styles/Image.scss';
+import '../Customs/CTable/CTable.scss'
+import {
+  compareIsMandatory,
+  compareName,
+  compareNumberOfDoses,
+  compareReleaseDate,
+} from '../../utils/sort';
 import { GetColumnSearchProps } from './GetColumnSearchProps';
 export const GetColumns = (
   handleFavouriteChange: (Obj: IVaccine) => void,
@@ -35,6 +42,11 @@ export const GetColumns = (
       key: 'name',
       align: 'center',
       width: widthPer,
+      sorter: {
+        compare: compareName,
+        multiple: 3,
+      },
+      defaultSortOrder:"ascend" ,
       ...GetColumnSearchProps('name'),
     },
     {
@@ -43,6 +55,10 @@ export const GetColumns = (
       key: 'numberOfDoses',
       align: 'center',
       width: widthPer,
+      sorter: {
+        compare: compareNumberOfDoses,
+        multiple: 2,
+      },
       ...GetColumnSearchProps('numberOfDoses'),
     },
     {
@@ -52,11 +68,14 @@ export const GetColumns = (
       align: 'center',
       width: widthPer,
       ...GetColumnSearchProps('releaseDate'),
+      sorter: {
+        compare: compareReleaseDate,
+        multiple: 1,
+      },
       render: (text) => {
         const newDatestring = text.split('T')[0];
         return <div>{newDatestring}</div>;
       },
-
     },
 
     {
@@ -65,6 +84,11 @@ export const GetColumns = (
       key: 'isMandatory',
       align: 'center',
       width: widthPer,
+      sorter: {
+        compare: compareIsMandatory,
+        multiple: 4,
+      },
+      defaultSortOrder:"ascend" ,
       render: (text: boolean, contact) => {
         return (
           <div

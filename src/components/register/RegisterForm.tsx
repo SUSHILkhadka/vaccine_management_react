@@ -2,13 +2,18 @@ import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
 import { Form } from 'antd';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import IMAGE_LOGO2 from '../../assets/logo2.jpg';
 import { register } from '../../axios/backendUser';
 import { PATH_LOGIN } from '../../constants/routes';
 import { IRegister } from '../../interface/IRegister';
 import '../../styles/Form.scss';
 import successMessage, { errorMessage } from '../../utils/message';
 import { getRegisterBodyFromForm } from '../../utils/parser';
-import { checkIfEmailAlreadyExists, confirmPasswordRule, ruleForSignIn } from '../../validations/formValidator';
+import {
+  checkIfEmailAlreadyExists,
+  confirmPasswordRule,
+  ruleForSignIn,
+} from '../../validations/formValidator';
 import { CButtonLogin } from '../Customs/CButtons/CButtonLogin';
 import { CInputPassword } from '../Customs/CInput/CInputPassword';
 import { CInputString } from '../Customs/CInput/CInputString';
@@ -27,12 +32,10 @@ const RegisterForm: React.FC = () => {
       successMessage(response.message);
       navigate(PATH_LOGIN);
     } catch (e: any) {
-      errorMessage("Something went wrong. Please try later")
+      errorMessage('Something went wrong. Please try later');
     }
     setloading(false);
   };
-
-
 
   const trimmer = (value: string) => {
     const startTrimmedValue = value.trimStart();
@@ -48,6 +51,10 @@ const RegisterForm: React.FC = () => {
 
   return (
     <div className='form'>
+      <div className='login--image--containter'>
+        <img className='img--logo' src={IMAGE_LOGO2}></img>
+        <div className='form--login--text'>Vaccine Management</div>
+      </div>
       <div className='form--login--header'>SignUp</div>
       <Form
         layout='vertical'

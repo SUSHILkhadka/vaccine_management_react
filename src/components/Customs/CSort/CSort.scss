@@ -1,20 +1,41 @@
 @import "../../../styles/Variables.scss";
 .custom--dropdown--container{
+    display: flex;
+    justify-content: right;
+}
+.custom--dropdown--button{
     background-color: $pink1;
+    display: flex;
     padding: 3px 1rem;
     border-radius: 20px;
+    border: 1px solid $pink1;
     box-sizing: border-box;
+    font-size: 12px;
+    color: $white1;
+
+    cursor: pointer;
 }
-.custom--dropdown--container:hover{
+.custom--dropdown--button:hover{    
+
     background-color: $white1;
 
     border: 1px solid $pink1;
     border-radius: 20px;
+    color: $pink1;
+    span{
+        color: white;
+        background-color: $pink1;
+    }
 }
 
-.custom--dropdown--title{
-    color: $white1;
-}
-.custom--dropdown--title:hover{
-    color:$pink1;
+.custom--dropdown--span{
+    color: $pink1;
+    font-size: 14px;
+    background-color: white;
+    padding: 0px 4px;
+    margin: 0px 4px;
+    margin-top: 3px;
+    border: 0px;
+    font-weight: bold;
+
 }

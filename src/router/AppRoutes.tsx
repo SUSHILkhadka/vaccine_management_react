@@ -19,7 +19,7 @@ import EditVaccinePage from '../pages/vaccine/EditVaccinePage';
 import ListVaccinePage from '../pages/vaccine/ListVaccinePage';
 import { checkToken } from '../redux_toolkit/slices/authSlice';
 import { AppDispatch, RootState } from '../redux_toolkit/stores/store';
-import { ProtectedRoutes } from './routerUtils';
+import { ProtectedRoutes, UnProtectedRoutes } from './routerUtils';
 
 function AppRoutes() {
   const authInfo = useSelector((state: RootState) => state.auth);
@@ -28,6 +28,7 @@ function AppRoutes() {
   useEffect(() => {
     dispatch(checkToken());
   }, []);
+
   if (authInfo.status == 'loading') {
     return <SplashScreen />;
   }
@@ -35,10 +36,12 @@ function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={PATH_LOGIN} element={<LoginPage />} />
-        <Route path={PATH_REGISTER} element={<RegisterPage />} />
-        <Route path='/' element={<ProtectedRoutes />}>
-          <Route path='/' element={<Navbar />}>
+        <Route element={<UnProtectedRoutes />}>
+          <Route path={PATH_LOGIN} element={<LoginPage />} />
+          <Route path={PATH_REGISTER} element={<RegisterPage />} />
+        </Route>
+        <Route element={<ProtectedRoutes />}>
+          <Route element={<Navbar />}>
             <Route path={PATH_VACCINE_TABLE} element={<ListVaccinePage />} />
             <Route path={PATH_VACCINE_ADD} element={<AddVaccinePage />} />
             <Route path={PATH_VACCINE_EDIT} element={<EditVaccinePage />} />

@@ -17,10 +17,23 @@
     padding: 4px;
 
     height: 100vh;
-    background-color: rgba(253,137,215,1);
+    background-color: rgb(198, 130, 174);
 background: filter-gradient(#fd89d7, #fcecfc, horizontal);
 background: background-image(linear-gradient(left, rgba(253,137,215,1) 0%, rgba(255,124,216,1) 0%, rgba(251,166,225,1) 0%, rgba(252,236,252,1) 100%));
 
 
+}
+.navbar--image--containter{
+    display: flex;
+    justify-content: center;
+    padding:1rem;
+    align-items: center;
+
+    font-size: 20px;
+}
+.navbar--logo--text{
+    padding: 3px;
+    font-weight: bold;
+    text-align: center;
 }
 

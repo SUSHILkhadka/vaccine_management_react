@@ -1,13 +1,25 @@
 import Resizer from 'react-image-file-resizer';
-import { IMAGE_COMPRESSION_PERCENTAGE } from '../constants/common';
+
+export const getCompressionPercentForFixedSize = (
+  presentFileSize: number,
+  fixedFileSize: number
+) => {
+  if (presentFileSize <= fixedFileSize) {
+    return 100;
+  } else {
+    return Math.round((100 * fixedFileSize) / presentFileSize);
+  }
+};
+
+const maxWidth = 300;
 export const resizeFile = (file: File) =>
   new Promise((resolve) => {
     Resizer.imageFileResizer(
       file,
-      300,
-      300,
+      maxWidth,
+      maxWidth,
       'JPEG',
-      IMAGE_COMPRESSION_PERCENTAGE,
+      50,
       0,
       (uri) => {
         resolve(uri);

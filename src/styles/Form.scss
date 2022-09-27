@@ -13,11 +13,17 @@
 }
 .form--login--header{
     color: $pink1;
-    font-size: 40px;
+    font-size: 25px;
     font-weight: bold;
     margin: 1rem;
 }
 
+.form--login--text{
+    color: $pink1;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 1rem;
+}
 a{
     color: $black1;
     font-weight: 600;

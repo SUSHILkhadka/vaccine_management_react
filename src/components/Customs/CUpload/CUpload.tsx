@@ -12,17 +12,22 @@ import './CUpload.scss';
 
 const CustomUpload: React.FC = () => {
   const vaccineInfo = useSelector((state: RootState) => state.vaccine);
+  const dispatch = useDispatch();
 
   const [loading, setloading] = useState(false);
-  const dispatch = useDispatch();
 
   const props: UploadProps = {
     beforeUpload: async (file) => {
+      if (file.type.split('/')[0] != 'image') {
+        message.error('File type error. Please select image');
+        return false;
+      }
+
       setloading(true);
       const formData = new FormData();
-      console.log('file = ', file);
-      const resizedFile: any = await resizeFile(file);
-      console.log('resizedFile = ', resizedFile);
+      console.log('before', file);
+      const resizedFile = (await resizeFile(file)) as File;
+      console.log('after', resizedFile);
 
       formData.append('keyForFileObject', resizedFile);
       try {
@@ -39,7 +44,7 @@ const CustomUpload: React.FC = () => {
     showUploadList: false,
   };
   return (
-    <ImgCrop rotate>
+    // <ImgCrop rotate>
       <Upload {...props}>
         <div className='customphoto--container'>
           <div className='image--container'>
@@ -58,7 +63,7 @@ const CustomUpload: React.FC = () => {
           </div>
         </div>
       </Upload>
-    </ImgCrop>
+    // </ImgCrop>
   );
 };
 

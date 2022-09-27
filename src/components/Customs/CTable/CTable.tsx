@@ -51,12 +51,14 @@ const CTable = (props: propsTypeforVaccineTable) => {
 
   const columns = GetColumns(handleFavouriteChange, handleEdit, handleDelete);
 
-  const empty=<div className='table--empty--container'>Vaccine List is empty</div>
+  const empty = (
+    <div className='table--empty--container'>Vaccine List is empty</div>
+  );
 
   return (
     <div className='table--container'>
       <Table
-      locale={{ emptyText: empty}}
+        locale={{ emptyText: empty }}
         className='actual--table'
         columns={columns}
         dataSource={props.Obj}

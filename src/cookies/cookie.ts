@@ -11,7 +11,7 @@ export const saveLoginResponse = (response: any) => {
 /**
  *
  * @param response accesstoken itself
- * saves accesstoken in cookie  
+ * saves accesstoken in cookie
  */
 export function saveAccessToken(accessToken: string) {
   Cookies.set('accessToken', accessToken);
@@ -33,12 +33,12 @@ export function getAccessToken(): string {
  * saves in cookie as long as expiry time is greater than now.
  */
 export function saveRefreshToken(refreshToken: string) {
-  try{
-  const tokenData=jwt(refreshToken) as IDataAtToken
-  const date=tokenData.expiryDateForRefreshToken
-  Cookies.set('refreshToken', refreshToken, { expires: new Date(date) });
-  }catch{
-    Cookies.remove('refreshToken')
+  try {
+    const tokenData = jwt(refreshToken) as IDataAtToken;
+    const date = tokenData.expiryDateForRefreshToken;
+    Cookies.set('refreshToken', refreshToken, { expires: new Date(date) });
+  } catch {
+    Cookies.remove('refreshToken');
   }
 }
 

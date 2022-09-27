@@ -66,7 +66,10 @@ instance.interceptors.response.use(
         !originalConfig._retry &&
         err.response.data.message === 'Invalid refresh token'
       ) {
+        originalConfig._retry = true;
         saveLoginResponse('');
+        window.location.reload();
+        return instance(originalConfig);
       }
     }
     return Promise.reject(err);
