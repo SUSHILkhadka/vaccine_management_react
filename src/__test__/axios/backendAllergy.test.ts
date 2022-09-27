@@ -72,8 +72,8 @@ describe('for allergy', () => {
     const output = await sentArrayOfAllergyToBackend(input, 1);
 
     const expectedResponseArray = [
-      { ...allergyArray[0],status:undefined, vaccineId: 1 },
-      { ...allergyArray[1],status:undefined, vaccineId: 1 },
+      { ...allergyArray[0], status: undefined, vaccineId: 1 },
+      { ...allergyArray[1], status: undefined, vaccineId: 1 },
       'without any body',
     ];
     expect(output).toEqual(expectedResponseArray);

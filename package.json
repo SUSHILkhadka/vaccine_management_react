@@ -33,7 +33,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettify": "prettier --single-quote --print-width 120 --write {src,test}/**/*.ts",
+    "commit":"npm run prettify && git add . && git commit -m"
   },
   "eslintConfig": {
     "extends": [

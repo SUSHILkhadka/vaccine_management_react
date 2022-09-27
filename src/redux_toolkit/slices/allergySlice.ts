@@ -50,11 +50,5 @@ export const allergySlice = createSlice({
   },
 });
 
-export const {
-  loadAllergyList,
-  resetAllergyList,
-  addNewAllergy,
-  deleteAllergy,
-  editAllergy,
-} = allergySlice.actions;
+export const { loadAllergyList, resetAllergyList, addNewAllergy, deleteAllergy, editAllergy } = allergySlice.actions;
 export const allergyReducer = allergySlice.reducer;

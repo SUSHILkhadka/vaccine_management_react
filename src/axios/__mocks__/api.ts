@@ -1,7 +1,7 @@
 import { vaccineArray } from '../../__test__/utils/sort.test';
 
 module.exports = {
-  post: (url: string, body: any = "without any body") => {
+  post: (url: string, body: any = 'without any body') => {
     return {
       data: {
         data: body,
@@ -22,7 +22,7 @@ module.exports = {
       },
     };
   },
-  delete: (url: string, body: any = "without any body") => {
+  delete: (url: string, body: any = 'without any body') => {
     return {
       data: {
         data: body,

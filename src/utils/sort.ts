@@ -1,7 +1,5 @@
 import { IVaccine } from '../interface/IVaccine';
 
-
-
 export const compareName = (a: IVaccine, b: IVaccine) => {
   const keyA = a.name.toLowerCase();
   const keyB = b.name.toLowerCase();
@@ -29,7 +27,6 @@ export const compareIsMandatory = (a: IVaccine, b: IVaccine) => {
   if (keyA < keyB) return 1;
   return 0;
 };
-
 
 export const sortByFavouritesOnly = (dataOriginal: IVaccine[]) => {
   const listOfFavourite: IVaccine[] = [];

@@ -1,6 +1,6 @@
 import { IVaccineToInsert } from '../interface/IVaccine';
 import api from './api';
-const ENDPOINT_VACCINE= '/vaccine/';
+const ENDPOINT_VACCINE = '/vaccine/';
 
 /**
  *

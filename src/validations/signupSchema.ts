@@ -9,9 +9,7 @@ const signupSchema = yup.object().shape({
     .max(25, 'Password too long')
     .required('Password is required')
     .trim(),
-  confirmPassword: yup
-    .string()
-    .oneOf([yup.ref('password')], 'Both password must match'),
+  confirmPassword: yup.string().oneOf([yup.ref('password')], 'Both password must match'),
 });
 
 export default signupSchema;

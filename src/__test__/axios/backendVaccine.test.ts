@@ -1,9 +1,4 @@
-import {
-  addVaccine,
-  deleteVaccine,
-  editVaccine,
-  readAllVaccines,
-} from '../../axios/backendVaccine';
+import { addVaccine, deleteVaccine, editVaccine, readAllVaccines } from '../../axios/backendVaccine';
 import { vaccineArray } from '../utils/sort.test';
 jest.mock('../../axios/api');
 
