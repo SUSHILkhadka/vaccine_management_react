@@ -1,0 +1,35 @@
+@import "../../styles/Variables.scss";
+.form--vaccine--header--container{
+    background-color: $white3;
+    border-radius: 30px;
+
+}
+
+.form--vaccine--header--left{
+    display: flex;
+    justify-content: left;
+
+}
+.form--vaccine--header--right{
+    display: flex;
+    justify-content: right;
+
+}
+.form--row2{
+    display: flex;
+}
+.form--vaccine{
+    background-color: $white3;
+    width: 50%;
+}
+.form--allergy{
+    width: 50%;
+
+}
+
+.button--save{
+width: 30%;
+align-self: flex-end;
+}
+
+

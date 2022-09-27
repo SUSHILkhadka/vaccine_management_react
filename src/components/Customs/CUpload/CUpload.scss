@@ -1,0 +1,39 @@
+@import '../../../styles/Variables.scss';
+$size:160px;
+.customphoto--container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: $size;
+    height: $size;
+}
+.image--container{
+    position: absolute;
+    top:0;
+    left:0;
+    height: $size;
+    width: $size;
+}
+
+.img--avatar{
+    border-radius: 100px;
+    width: $size;
+    height: $size;
+}
+
+.icon--container{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    width: 100%;
+    color: white;
+    z-index: 2;
+}
+.icon--plus{
+    font-size: 80px;
+    opacity: 0.5;
+
+
+}
+

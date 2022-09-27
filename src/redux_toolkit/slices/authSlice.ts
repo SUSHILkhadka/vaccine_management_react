@@ -3,7 +3,7 @@ import instance from '../../axios/api';
 import { getRefreshToken } from '../../cookies/cookie';
 import { IAuth } from '../../interface/IAuth';
 
-const defaultValue: IAuth = {
+const initialValue: IAuth = {
   id: 0,
   username: '',
   email: '',
@@ -22,7 +22,7 @@ export const checkToken = createAsyncThunk(
 
 export const authSlice = createSlice({
   name: 'authInfo',
-  initialState: defaultValue,
+  initialState: initialValue,
   reducers: {
     setAuthWithLoginResponse: (state, action) => {
       state.id = action.payload.data.id;

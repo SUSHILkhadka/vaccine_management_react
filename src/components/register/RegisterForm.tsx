@@ -8,7 +8,7 @@ import { IRegister } from '../../interface/IRegister';
 import '../../styles/Form.scss';
 import successMessage, { errorMessage } from '../../utils/message';
 import { getRegisterBodyFromForm } from '../../utils/parser';
-import { checkIfEmailAlreadyExists, ruleForSignIn } from '../../validations/formValidator';
+import { checkIfEmailAlreadyExists, confirmPasswordRule, ruleForSignIn } from '../../validations/formValidator';
 import { CButtonLogin } from '../Customs/CButtons/CButtonLogin';
 import { CInputPassword } from '../Customs/CInput/CInputPassword';
 import { CInputString } from '../Customs/CInput/CInputString';
@@ -35,13 +35,7 @@ const RegisterForm: React.FC = () => {
     setloading(false);
   };
 
-  const confirmPasswordRule = (getFieldValue: any, value: string) => {
-    if (!value || getFieldValue('password') === value) {
-      return Promise.resolve();
-    } else {
-      return Promise.reject(new Error('Password do not match'));
-    }
-  };
+
 
   const trimmer = (value: string) => {
     const startTrimmedValue = value.trimStart();

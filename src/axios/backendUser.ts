@@ -1,10 +1,10 @@
 import { getRefreshToken } from '../cookies/cookie';
 import { IRegister } from '../interface/IRegister';
 import api from './api';
-const ENDPOINT_LOGIN = '/signin';
+const ENDPOINT_LOGIN = '/signin/';
 const ENDPOINT_REGISTER = '/signup';
 const ENDPOINT_CHECKEMAIL = '/checkEmail';
-const ENDPOINT_LOGOUT = '/logout';
+const ENDPOINT_LOGOUT = '/signout';
 const ENDPOINT_USER = '/user';
 /**
  *
