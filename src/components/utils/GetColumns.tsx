@@ -20,10 +20,12 @@ export const GetColumns = (
       align: 'center',
       width: 20,
       render: (url: string) => {
-        return Boolean(url) ? (
-          <img className='img-avatar-table' src={url} alt='Loading' />
-        ) : (
-          <img className='img-avatar-table' src={imageURL} alt='loading' />
+        return (
+          <img
+            className='img-avatar-table'
+            src={Boolean(url) ? url : imageURL}
+            alt='Loading'
+          />
         );
       },
     },
@@ -48,13 +50,13 @@ export const GetColumns = (
       dataIndex: 'releaseDate',
       key: 'releaseDate',
       align: 'center',
+      width: widthPer,
+      ...GetColumnSearchProps('releaseDate'),
       render: (text) => {
         const newDatestring = text.split('T')[0];
-        console.log(text, newDatestring);
-        return <a>{newDatestring}</a>;
+        return <div>{newDatestring}</div>;
       },
-      width: widthPer,
-      // ...GetColumnSearchProps('releaseDate'),
+
     },
 
     {

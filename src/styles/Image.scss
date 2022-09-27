@@ -2,4 +2,14 @@
     height: 100px;
     width: 100px;
     border-radius: 50%;
+
+    -webkit-box-shadow: 10px 10px 81px -38px rgba(191,0,255,1);
+-moz-box-shadow: 10px 10px 81px -38px rgba(191,0,255,1);
+box-shadow: 10px 10px 81px -38px rgba(191,0,255,1);
+}
+
+.img-avatar-table:hover{
+    -webkit-box-shadow: 10px 10px 39px -27px rgba(6,0,8,0.94);
+    -moz-box-shadow: 10px 10px 39px -27px rgba(6,0,8,0.94);
+    box-shadow: 10px 10px 39px -27px rgba(6,0,8,0.94);
 }

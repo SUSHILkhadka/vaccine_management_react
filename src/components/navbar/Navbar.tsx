@@ -56,10 +56,26 @@ const Navbar = () => {
           open={isModalVisible}
           onOk={() => handleLogout('')}
           onCancel={() => setIsModalVisible(false)}
+          footer={[
+            <Button className='button button--save button--edit'  key='back' onClick={() => setIsModalVisible(false)}>
+              Cancel
+            </Button>,
+            <Button
+              key='submit'
+              type='primary'
+              className='button button--save'
+              loading={loading}
+              onClick={() => handleLogout('')}
+            >
+              Logout
+            </Button>,
+          ]}
         >
           <p>Are you sure you want to logout?</p>
         </Modal>
-        <CNavlink Icon={MailOutlined} onClick={() => setIsModalVisible(true)}>Logout</CNavlink>
+        <CNavlink Icon={MailOutlined} onClick={() => setIsModalVisible(true)}>
+          Logout
+        </CNavlink>
       </div>
       <Outlet />
     </div>

@@ -1,5 +1,5 @@
 import { message, Spin, Upload } from 'antd';
-// import ImgCrop from 'antd-img-crop';
+import ImgCrop from 'antd-img-crop';
 import type { UploadProps } from 'antd/es/upload/interface';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +7,9 @@ import { uploadToCloud } from '../../../axios/backendUpload';
 import { imageURL } from '../../../constants/common';
 import { changePhotoUrl } from '../../../redux_toolkit/slices/vaccineSlice';
 import { RootState } from '../../../redux_toolkit/stores/store';
+import { resizeFile } from '../../../utils/imageCompressor';
 import './CUpload.scss';
+
 const CustomUpload: React.FC = () => {
   const vaccineInfo = useSelector((state: RootState) => state.vaccine);
 
@@ -18,7 +20,11 @@ const CustomUpload: React.FC = () => {
     beforeUpload: async (file) => {
       setloading(true);
       const formData = new FormData();
-      formData.append('keyForFileObject', file);
+      console.log('file = ', file);
+      const resizedFile: any = await resizeFile(file);
+      console.log('resizedFile = ', resizedFile);
+
+      formData.append('keyForFileObject', resizedFile);
       try {
         const response = await uploadToCloud(formData);
         dispatch(changePhotoUrl(response.url));
@@ -33,31 +39,26 @@ const CustomUpload: React.FC = () => {
     showUploadList: false,
   };
   return (
-    // <ImgCrop rotate>
-
-    <Upload {...props}>
-      <div className='customphoto--container'>
-        <div className='image--container'>
-          {Boolean(vaccineInfo.photoUrl) ? (
-            <img
-              className='img--avatar'
-              src={vaccineInfo.photoUrl}
-              alt='Loading'
-            />
-          ) : (
-            <img className='img--avatar' src={imageURL} alt='loading' />
-          )}
-        </div>
-        <div className='icon--container'>
-            {loading ? (
-              <Spin />
+    <ImgCrop rotate>
+      <Upload {...props}>
+        <div className='customphoto--container'>
+          <div className='image--container'>
+            {Boolean(vaccineInfo.photoUrl) ? (
+              <img
+                className='img--avatar'
+                src={vaccineInfo.photoUrl}
+                alt='Loading'
+              />
             ) : (
-              <div className='icon--plus'>+</div>
+              <img className='img--avatar' src={imageURL} alt='loading' />
             )}
           </div>
-      </div>
-    </Upload>
-    // </ImgCrop>
+          <div className='icon--container'>
+            {loading ? <Spin /> : <div className='icon--plus'>+</div>}
+          </div>
+        </div>
+      </Upload>
+    </ImgCrop>
   );
 };
 
