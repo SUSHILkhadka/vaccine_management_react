@@ -3,3 +3,10 @@
     margin: 1rem;
     width: 50%;
 }
+@media only screen and (max-width: 800px) {
+    .form--setting{
+        justify-self: center;
+        margin: auto;
+        width: 80%;
+    }
+  }

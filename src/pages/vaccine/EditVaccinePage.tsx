@@ -8,7 +8,7 @@ import {
 } from '../../redux_toolkit/slices/allergySlice';
 import { RootState } from '../../redux_toolkit/stores/store';
 import '../../styles/Page.scss';
-import { showDefaultErrorMessage } from '../../utils/message';
+import { errorMessage, showDefaultErrorMessage } from '../../utils/message';
 const EditVaccinePage = () => {
   const vaccineInfo = useSelector((state: RootState) => state.vaccine);
   const dispatch = useDispatch();
@@ -23,8 +23,12 @@ const EditVaccinePage = () => {
         if (isMounted) {
           dispatch(loadAllergyList(response.data));
         }
-      } catch {
-        showDefaultErrorMessage();
+      } catch (e: any) {
+        if (e.response && e.response.data) {
+          errorMessage(e.response.data.message);
+        } else {
+          showDefaultErrorMessage();
+        }
       }
     };
     getAllAllergyOfVaccine();
@@ -46,7 +50,6 @@ const EditVaccinePage = () => {
 
   return (
     <div className='page--addvaccine'>
-      Edit page
       <VaccineForm initialValue={initialValue} />
     </div>
   );

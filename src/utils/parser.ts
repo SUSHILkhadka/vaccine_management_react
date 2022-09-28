@@ -1,7 +1,7 @@
 import { IRegister } from '../interface/IRegister';
 import { IVaccineToInsert } from '../interface/IVaccine';
 
-export const getRegisterBodyFromForm = (values: any):IRegister => {
+export const getRegisterBodyFromForm = (values: any): IRegister => {
   const body = {
     name: values.name.trim(),
     email: values.email,
@@ -19,26 +19,23 @@ export const getLoginBodyFromForm = (values: any) => {
   return body;
 };
 
-
-
-export const getVaccineBodyFromForm = (values: any): IVaccineToInsert=> {
+export const getVaccineBodyFromForm = (values: any): IVaccineToInsert => {
   const body = {
     name: values.name.trim(),
     description: values.description,
     numberOfDoses: values.numberOfDoses,
     releaseDate: values.releaseDate,
     isMandatory: values.isMandatory,
-    photoUrl:'',
+    photoUrl: '',
   };
   return body;
 };
 
-export const getEditPasswordBodyFromForm = (values: any)=> {
+export const getEditPasswordBodyFromForm = (values: any) => {
   const body = {
     name: values.name,
     oldPassword: values.oldPassword,
-    password: values.password?values.password:values.oldPassword,
+    password: values.password ? values.password : values.oldPassword,
   };
   return body;
 };
-

@@ -16,9 +16,7 @@ export const vaccineSlice = createSlice({
   initialState: initalValue,
   reducers: {
     loadVaccine: (state, action) => {
-      const newDatestring = action.payload.releaseDate
-        ? action.payload.releaseDate.split('T')[0]
-        : '';
+      const newDatestring = action.payload.releaseDate ? action.payload.releaseDate.split('T')[0] : '';
       state.id = action.payload.id;
       state.name = action.payload.name;
       state.description = action.payload.description;
@@ -34,6 +32,5 @@ export const vaccineSlice = createSlice({
   },
 });
 
-export const { loadVaccine, resetVaccine, changePhotoUrl } =
-  vaccineSlice.actions;
+export const { loadVaccine, resetVaccine, changePhotoUrl } = vaccineSlice.actions;
 export const vaccineReducer = vaccineSlice.reducer;

@@ -7,7 +7,10 @@ import { register } from '../../axios/backendUser';
 import { PATH_LOGIN } from '../../constants/routes';
 import { IRegister } from '../../interface/IRegister';
 import '../../styles/Form.scss';
-import successMessage, { errorMessage } from '../../utils/message';
+import successMessage, {
+  errorMessage,
+  showDefaultErrorMessage,
+} from '../../utils/message';
 import { getRegisterBodyFromForm } from '../../utils/parser';
 import {
   checkIfEmailAlreadyExists,
@@ -25,14 +28,17 @@ const RegisterForm: React.FC = () => {
   const onFinish = async (values: any) => {
     setloading(true);
     const body: IRegister = getRegisterBodyFromForm(values);
-    console.log('body from parser = ', body);
     try {
       const response = await register(body);
 
       successMessage(response.message);
       navigate(PATH_LOGIN);
     } catch (e: any) {
-      errorMessage('Something went wrong. Please try later');
+      if (e.response && e.response.data) {
+        errorMessage(e.response.data.message);
+      } else {
+        showDefaultErrorMessage();
+      }
     }
     setloading(false);
   };
@@ -43,10 +49,10 @@ const RegisterForm: React.FC = () => {
   };
 
   const defaultValue = {
-    name: 'a',
-    email: 'a@gmail.com',
-    password: 'a@gmail.com',
-    confirmPassword: 'a@gmail.com',
+    name: '',
+    email: 'aa@gmail.com',
+    password: 'aa@gmail.com',
+    confirmPassword: 'aa@gmail.com',
   };
 
   return (
@@ -62,7 +68,7 @@ const RegisterForm: React.FC = () => {
         wrapperCol={{ span: 24 }}
         onFinish={onFinish}
         autoComplete='off'
-        // initialValues={defaultValue}
+        initialValues={defaultValue}
         requiredMark={false}
       >
         <Form.Item

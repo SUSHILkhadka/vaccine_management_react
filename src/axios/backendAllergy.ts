@@ -19,9 +19,7 @@ export async function addAllergy(body: any): Promise<any> {
  * @param vaccineId id of vaccine whose allergies are to be listed
  * @returns list of alleriges of vaccine
  */
-export async function getAllAllergiesByPatientId(
-  vaccineId: number
-): Promise<any> {
+export async function getAllAllergiesByPatientId(vaccineId: number): Promise<any> {
   const response = await api.get(routeName + vaccineId);
   return response.data;
 }
@@ -47,10 +45,7 @@ export async function deleteAllergy(allergyId: number): Promise<any> {
   return response.data;
 }
 
-export async function addArrayOfAllergy(
-  array: IAllergy[],
-  vaccineId: number
-): Promise<any> {
+export async function addArrayOfAllergy(array: IAllergy[], vaccineId: number): Promise<any> {
   for (let i = 0; i < array.length; i++) {
     const body = {
       name: array[i].name,
@@ -60,11 +55,8 @@ export async function addArrayOfAllergy(
   }
 }
 
-export async function sentArrayOfAllergyToBackend(
-  array: IAllergy[],
-  vaccineId: number
-): Promise<any> {
-  let responseArray=[]
+export async function sentArrayOfAllergyToBackend(array: IAllergy[], vaccineId: number): Promise<any> {
+  let responseArray = [];
 
   for (let i = 0; i < array.length; i++) {
     const body = {
@@ -73,17 +65,15 @@ export async function sentArrayOfAllergyToBackend(
       vaccineId: vaccineId,
     };
 
-
     if (array[i].status === 'added') {
       const response = await addAllergy(body);
-      responseArray.push(response.data)
+      responseArray.push(response.data);
     } else if (array[i].status === 'edited') {
-      const response =await updateAllergy(body);
-      responseArray.push(response.data)
-
+      const response = await updateAllergy(body);
+      responseArray.push(response.data);
     } else if (array[i].status === 'deleted') {
-      const response =await deleteAllergy(body.id);
-      responseArray.push(response.data)
+      const response = await deleteAllergy(body.id);
+      responseArray.push(response.data);
     }
   }
   return responseArray;

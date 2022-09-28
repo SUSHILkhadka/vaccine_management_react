@@ -14,7 +14,7 @@ const AllergyTable = () => {
         <>
           {allergyArrayInfo.map((element: IAllergy, index: number) => {
             if (element.status != 'deleted')
-              return <AllergyCard index={index} name={element.name} />;
+              return <AllergyCard key={element.id} index={index} name={element.name} />;
           })}
         </>
       </div>

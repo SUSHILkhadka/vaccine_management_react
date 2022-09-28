@@ -14,6 +14,7 @@ import successMessage, {
   showDefaultErrorMessage,
 } from '../../utils/message';
 import { getLoginBodyFromForm } from '../../utils/parser';
+import { ruleForSignIn } from '../../validations/formValidator';
 import { CButtonLogin } from '../Customs/CButtons/CButtonLogin';
 import { CInputPassword } from '../Customs/CInput/CInputPassword';
 import { CInputString } from '../Customs/CInput/CInputString';
@@ -35,7 +36,7 @@ const LoginForm: React.FC = () => {
       navigate(PATH_ROOT, { replace: true });
       successMessage(response.message);
     } catch (e: any) {
-      if (e.response.data) {
+      if (e.response && e.response.data) {
         errorMessage(e.response.data.message);
       } else {
         showDefaultErrorMessage();
@@ -65,7 +66,7 @@ const LoginForm: React.FC = () => {
         <Form.Item
           label='Email'
           name='email'
-          rules={[{ required: true, message: 'Please input your email!' }]}
+          rules={[ruleForSignIn]}
         >
           <CInputString
             prefix={<MailOutlined />}

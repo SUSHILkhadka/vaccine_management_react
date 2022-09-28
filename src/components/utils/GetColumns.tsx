@@ -4,13 +4,13 @@ import type { ColumnsType } from 'antd/es/table';
 import { imageURL } from '../../constants/common';
 import { IVaccine } from '../../interface/IVaccine';
 import '../../styles/Image.scss';
-import '../Customs/CTable/CTable.scss'
 import {
   compareIsMandatory,
   compareName,
   compareNumberOfDoses,
   compareReleaseDate,
 } from '../../utils/sort';
+import '../Customs/CTable/CTable.scss';
 import { GetColumnSearchProps } from './GetColumnSearchProps';
 export const GetColumns = (
   handleFavouriteChange: (Obj: IVaccine) => void,
@@ -25,7 +25,8 @@ export const GetColumns = (
       dataIndex: 'photoUrl',
       key: 'photoUrl',
       align: 'center',
-      width: 20,
+      width: "10%",
+
       render: (url: string) => {
         return (
           <img
@@ -46,7 +47,7 @@ export const GetColumns = (
         compare: compareName,
         multiple: 3,
       },
-      defaultSortOrder:"ascend" ,
+      defaultSortOrder: 'ascend',
       ...GetColumnSearchProps('name'),
     },
     {
@@ -59,6 +60,7 @@ export const GetColumns = (
         compare: compareNumberOfDoses,
         multiple: 2,
       },
+      responsive: ['md'],
       ...GetColumnSearchProps('numberOfDoses'),
     },
     {
@@ -76,6 +78,7 @@ export const GetColumns = (
         const newDatestring = text.split('T')[0];
         return <div>{newDatestring}</div>;
       },
+      responsive: ['md'],
     },
 
     {
@@ -88,12 +91,12 @@ export const GetColumns = (
         compare: compareIsMandatory,
         multiple: 4,
       },
-      defaultSortOrder:"ascend" ,
-      render: (text: boolean, contact) => {
+      defaultSortOrder: 'ascend',
+      render: (text: boolean, vaccine) => {
         return (
           <div
             className='table-favourite'
-            onClick={() => handleFavouriteChange(contact)}
+            onClick={() => handleFavouriteChange(vaccine)}
           >
             {!text ? (
               <StarOutlined />

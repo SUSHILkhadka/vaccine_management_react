@@ -1,9 +1,6 @@
 import Resizer from 'react-image-file-resizer';
 
-export const getCompressionPercentForFixedSize = (
-  presentFileSize: number,
-  fixedFileSize: number
-) => {
+export const getCompressionPercentForFixedSize = (presentFileSize: number, fixedFileSize: number) => {
   if (presentFileSize <= fixedFileSize) {
     return 100;
   } else {

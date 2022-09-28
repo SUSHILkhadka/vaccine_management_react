@@ -5,27 +5,8 @@ import {
   sentArrayOfAllergyToBackend,
   updateAllergy,
 } from '../../axios/backendAllergy';
-import { IAllergy } from '../../interface/IAllergy';
-import { vaccineArray } from '../utils/sort.test';
+import { allergyList, vaccineArray } from '../constants';
 jest.mock('../../axios/api');
-
-const allergyArray: IAllergy[] = [
-  {
-    id: -1,
-    name: 'allery1',
-    status: 'added',
-  },
-  {
-    id: 2,
-    name: 'allery2',
-    status: 'edited',
-  },
-  {
-    id: 3,
-    name: 'allery3',
-    status: 'deleted',
-  },
-];
 
 describe('for allergy', () => {
   const body = {
@@ -67,13 +48,13 @@ describe('for allergy', () => {
   });
 
   it('should get proper response when sentArrayOfAlleryToBackend is called with array of allergy of reduxstore', async () => {
-    const input = allergyArray;
+    const input = allergyList;
 
     const output = await sentArrayOfAllergyToBackend(input, 1);
 
     const expectedResponseArray = [
-      { ...allergyArray[0],status:undefined, vaccineId: 1 },
-      { ...allergyArray[1],status:undefined, vaccineId: 1 },
+      { ...allergyList[0], status: undefined, vaccineId: 1 },
+      { ...allergyList[1], status: undefined, vaccineId: 1 },
       'without any body',
     ];
     expect(output).toEqual(expectedResponseArray);

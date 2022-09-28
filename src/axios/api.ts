@@ -1,18 +1,13 @@
 import axios from 'axios';
 import { URL_TO_BACKEND } from '../constants/common';
-import {
-  getAccessToken,
-  getRefreshToken,
-  saveAccessToken,
-  saveLoginResponse,
-} from '../cookies/cookie';
+import { getAccessToken, getRefreshToken, saveAccessToken, saveLoginResponse } from '../cookies/cookie';
 
 /**
  * axios instane is create with given base url and headers type
  */
 const instance = axios.create({
-  //   baseURL: process.env.REACT_APP_URL_TO_BACKEND,
-  baseURL: URL_TO_BACKEND,
+  baseURL: process.env.REACT_APP_URL_TO_BACKEND,
+  // baseURL: URL_TO_BACKEND,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -23,8 +18,7 @@ const instance = axios.create({
  */
 instance.interceptors.request.use(
   (config) => {
-    if (config.headers)
-      config.headers['Authorization'] = 'Bearer ' + getAccessToken();
+    if (config.headers) config.headers['Authorization'] = 'Bearer ' + getAccessToken();
     return config;
   },
   (error) => {

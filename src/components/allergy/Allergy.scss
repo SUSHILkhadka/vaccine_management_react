@@ -28,6 +28,9 @@
     -moz-box-shadow: 3px 4px 8px 3px rgba(130,48,130,0.64);
     box-shadow: 3px 4px 8px 3px rgba(130,48,130,0.64);
 }
+.allergy--card:hover{
+cursor: pointer;
+}
 
 .allergy--card--deleteicon{
 margin-left: 4px;

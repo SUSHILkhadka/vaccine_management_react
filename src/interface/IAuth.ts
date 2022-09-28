@@ -1,7 +1,6 @@
 export interface IAuth {
-    id: number;
-    username: string;
-    email: string;
-    status?: 'loading' | 'fulfilled' | 'rejected';
-  }
-  
+  id: number;
+  username: string;
+  email: string;
+  status?: 'loading' | 'fulfilled' | 'rejected';
+}
