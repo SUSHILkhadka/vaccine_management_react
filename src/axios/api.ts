@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { URL_TO_BACKEND } from '../constants/common';
 import { getAccessToken, getRefreshToken, saveAccessToken, saveLoginResponse } from '../cookies/cookie';
+import { errorMessage } from '../utils/message';
 
 /**
  * axios instane is create with given base url and headers type
@@ -61,6 +62,7 @@ instance.interceptors.response.use(
       ) {
         originalConfig._retry = true;
         saveLoginResponse('');
+        errorMessage('Refresh token expired');
         window.location.reload();
         return instance(originalConfig);
       }

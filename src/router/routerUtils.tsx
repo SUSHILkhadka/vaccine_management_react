@@ -13,7 +13,8 @@ export const ProtectedRoutes = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (!Boolean(getRefreshToken())) {
-      errorMessage('refresh token expired');
+      if (authInfo.status === 'fulfilled')
+        errorMessage('refresh token expired');
       dispatch(resetAuth());
     }
   }, [navigate]);
