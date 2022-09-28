@@ -7,7 +7,6 @@ import { getAccessToken, getRefreshToken, saveAccessToken, saveLoginResponse } f
  */
 const instance = axios.create({
   baseURL: process.env.REACT_APP_URL_TO_BACKEND,
-  // baseURL: URL_TO_BACKEND,
   headers: {
     'Content-Type': 'application/json',
   },

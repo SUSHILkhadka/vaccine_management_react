@@ -12,7 +12,7 @@ const initialValue: IAuth = {
 };
 
 export const checkToken = createAsyncThunk('authInfo/checkRefreshToken', async (): Promise<any> => {
-  const response = await axios.post(URL_TO_BACKEND + '/token', {
+  const response = await axios.post(process.env.REACT_APP_URL_TO_BACKEND + '/token', {
     refreshToken: getRefreshToken(),
   });
   return response.data;
