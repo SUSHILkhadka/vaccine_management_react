@@ -1,4 +1,4 @@
-import { vaccineArray } from '../../__test__/utils/sort.test';
+import { vaccineArray } from '../../__test__/constants';
 
 module.exports = {
   post: (url: string, body: any = 'without any body') => {

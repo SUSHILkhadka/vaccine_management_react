@@ -1,5 +1,4 @@
 import { message, Spin, Upload } from 'antd';
-import ImgCrop from 'antd-img-crop';
 import type { UploadProps } from 'antd/es/upload/interface';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,9 +24,7 @@ const CustomUpload: React.FC = () => {
 
       setloading(true);
       const formData = new FormData();
-      console.log('before', file);
       const resizedFile = (await resizeFile(file)) as File;
-      console.log('after', resizedFile);
 
       formData.append('keyForFileObject', resizedFile);
       try {
@@ -45,24 +42,24 @@ const CustomUpload: React.FC = () => {
   };
   return (
     // <ImgCrop rotate>
-      <Upload {...props}>
-        <div className='customphoto--container'>
-          <div className='image--container'>
-            {Boolean(vaccineInfo.photoUrl) ? (
-              <img
-                className='img--avatar'
-                src={vaccineInfo.photoUrl}
-                alt='Loading'
-              />
-            ) : (
-              <img className='img--avatar' src={imageURL} alt='loading' />
-            )}
-          </div>
-          <div className='icon--container'>
-            {loading ? <Spin /> : <div className='icon--plus'>+</div>}
-          </div>
+    <Upload {...props}>
+      <div className='customphoto--container'>
+        <div className='image--container'>
+          {Boolean(vaccineInfo.photoUrl) ? (
+            <img
+              className='img--avatar'
+              src={vaccineInfo.photoUrl}
+              alt='Loading'
+            />
+          ) : (
+            <img className='img--avatar' src={imageURL} alt='loading' />
+          )}
         </div>
-      </Upload>
+        <div className='icon--container'>
+          {loading ? <Spin /> : <div className='icon--plus'>+</div>}
+        </div>
+      </div>
+    </Upload>
     // </ImgCrop>
   );
 };

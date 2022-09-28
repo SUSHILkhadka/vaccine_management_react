@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render allergy table page properly 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      <button
+        class="ant-btn ant-btn-default button button--save"
+        type="button"
+      >
+        <span>
+          Add allergy
+        </span>
+      </button>
+      <div />
+    </div>
+    <div
+      class="allergy--list--container"
+    >
+      <div>
+        <div
+          class="allergy--card"
+        >
+          allery1
+          <div
+            class="allergy--card--deleteicon"
+          >
+            ✕
+          </div>
+        </div>
+        <div />
+      </div>
+      <div>
+        <div
+          class="allergy--card"
+        >
+          allery3
+          <div
+            class="allergy--card--deleteicon"
+          >
+            ✕
+          </div>
+        </div>
+        <div />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

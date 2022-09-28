@@ -8,6 +8,7 @@ import { RootState } from '../redux_toolkit/stores/store';
 import { errorMessage } from '../utils/message';
 
 export const ProtectedRoutes = () => {
+  const authInfo = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
@@ -16,7 +17,11 @@ export const ProtectedRoutes = () => {
       dispatch(resetAuth());
     }
   }, [navigate]);
-  return Boolean(getRefreshToken()) ? <Outlet /> : <Navigate to={PATH_LOGIN} />;
+  return Boolean(getRefreshToken()) && authInfo.status === 'fulfilled' ? (
+    <Outlet />
+  ) : (
+    <Navigate to={PATH_LOGIN} />
+  );
 };
 
 export const UnProtectedRoutes = () => {

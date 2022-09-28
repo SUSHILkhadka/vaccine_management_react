@@ -35,7 +35,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prettify": "prettier --single-quote --print-width 120 --write {src,test}/**/*.ts",
-    "commit":"npm run prettify && git add . && git commit -m"
+    "git":"npm run prettify && git add . && git commit -m",
+    "git:rename":"npm run prettify && git add . && git commit --amend -m"
+
   },
   "eslintConfig": {
     "extends": [

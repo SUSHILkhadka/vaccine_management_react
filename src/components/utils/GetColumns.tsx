@@ -4,13 +4,13 @@ import type { ColumnsType } from 'antd/es/table';
 import { imageURL } from '../../constants/common';
 import { IVaccine } from '../../interface/IVaccine';
 import '../../styles/Image.scss';
-import '../Customs/CTable/CTable.scss'
 import {
   compareIsMandatory,
   compareName,
   compareNumberOfDoses,
   compareReleaseDate,
 } from '../../utils/sort';
+import '../Customs/CTable/CTable.scss';
 import { GetColumnSearchProps } from './GetColumnSearchProps';
 export const GetColumns = (
   handleFavouriteChange: (Obj: IVaccine) => void,
@@ -46,7 +46,7 @@ export const GetColumns = (
         compare: compareName,
         multiple: 3,
       },
-      defaultSortOrder:"ascend" ,
+      defaultSortOrder: 'ascend',
       ...GetColumnSearchProps('name'),
     },
     {
@@ -88,12 +88,12 @@ export const GetColumns = (
         compare: compareIsMandatory,
         multiple: 4,
       },
-      defaultSortOrder:"ascend" ,
-      render: (text: boolean, contact) => {
+      defaultSortOrder: 'ascend',
+      render: (text: boolean, vaccine) => {
         return (
           <div
             className='table-favourite'
-            onClick={() => handleFavouriteChange(contact)}
+            onClick={() => handleFavouriteChange(vaccine)}
           >
             {!text ? (
               <StarOutlined />

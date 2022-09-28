@@ -24,17 +24,10 @@ const CModalAllergy = ({ open, handleCancel, edit }: PropType) => {
   const dispatch = useDispatch();
 
   const onFinish = (values: any) => {
-    console.log('without trim ', values.name, '.');
-      console.log('with trim ', values.name.trim(), '.');
     if (edit.name && values.name != edit.name) {
-      console.log('edit',edit)
       dispatch(editAllergy({ ...edit, name: values.name.trim() }));
-      console.log('edit after',{ ...edit, name: values.name.trim() })
-
     }
     if (!edit.name) {
-      console.log('add')
-
       dispatch(addNewAllergy(values.name.trim()));
     }
     handleCancel();

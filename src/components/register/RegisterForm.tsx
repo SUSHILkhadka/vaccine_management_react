@@ -25,7 +25,6 @@ const RegisterForm: React.FC = () => {
   const onFinish = async (values: any) => {
     setloading(true);
     const body: IRegister = getRegisterBodyFromForm(values);
-    console.log('body from parser = ', body);
     try {
       const response = await register(body);
 

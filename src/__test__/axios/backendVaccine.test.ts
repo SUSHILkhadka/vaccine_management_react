@@ -1,5 +1,5 @@
 import { addVaccine, deleteVaccine, editVaccine, readAllVaccines } from '../../axios/backendVaccine';
-import { vaccineArray } from '../utils/sort.test';
+import { vaccineArray } from '../constants';
 jest.mock('../../axios/api');
 
 describe('for vaccine', () => {

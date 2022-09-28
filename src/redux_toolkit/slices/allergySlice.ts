@@ -31,7 +31,6 @@ export const allergySlice = createSlice({
       if (state[index].id == -1) {
         const temp = state;
         temp.splice(action.payload, 1);
-        console.log('in delete ', temp);
         state = temp;
       } else {
         state[index].status = 'deleted';
