@@ -1,22 +1,38 @@
 @import "./Variables.scss";
+$widthPercentage:95%;
 .page--addvaccine{
     background-color: $white2;
-    width:100%;
+    width:$widthPercentage;
     margin:1rem;
 
 }
 
 .page--setting{
     background-color: $white2;
-    width:100%;
+    width:$widthPercentage;
     display: flex;
     flex-direction: column;
     justify-content: left;
     margin:1rem;
+    margin-right: 0rem;
 }
 
 .page--listvaccine{
-    width:100%;
+    width:$widthPercentage;
     margin:1rem;
+    margin-right: 0rem;
+
 
 }
+
+.page--splash{
+    background-color: $white2;
+    width: $widthPercentage;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0rem;
+
+}
+

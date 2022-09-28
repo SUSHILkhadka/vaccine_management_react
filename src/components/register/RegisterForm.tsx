@@ -7,7 +7,10 @@ import { register } from '../../axios/backendUser';
 import { PATH_LOGIN } from '../../constants/routes';
 import { IRegister } from '../../interface/IRegister';
 import '../../styles/Form.scss';
-import successMessage, { errorMessage } from '../../utils/message';
+import successMessage, {
+  errorMessage,
+  showDefaultErrorMessage,
+} from '../../utils/message';
 import { getRegisterBodyFromForm } from '../../utils/parser';
 import {
   checkIfEmailAlreadyExists,
@@ -31,7 +34,11 @@ const RegisterForm: React.FC = () => {
       successMessage(response.message);
       navigate(PATH_LOGIN);
     } catch (e: any) {
-      errorMessage('Something went wrong. Please try later');
+      if (e.response && e.response.data) {
+        errorMessage(e.response.data.message);
+      } else {
+        showDefaultErrorMessage();
+      }
     }
     setloading(false);
   };

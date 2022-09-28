@@ -25,7 +25,8 @@ export const GetColumns = (
       dataIndex: 'photoUrl',
       key: 'photoUrl',
       align: 'center',
-      width: 20,
+      width: "10%",
+
       render: (url: string) => {
         return (
           <img
@@ -59,6 +60,7 @@ export const GetColumns = (
         compare: compareNumberOfDoses,
         multiple: 2,
       },
+      responsive: ['md'],
       ...GetColumnSearchProps('numberOfDoses'),
     },
     {
@@ -76,6 +78,7 @@ export const GetColumns = (
         const newDatestring = text.split('T')[0];
         return <div>{newDatestring}</div>;
       },
+      responsive: ['md'],
     },
 
     {

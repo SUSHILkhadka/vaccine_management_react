@@ -1,8 +1,9 @@
 import { Spin } from 'antd';
 import React from 'react';
+import '../styles/Page.scss'
 const SplashScreen: React.FC = () => {
   return (
-    <div className='splashscreen-container'>
+    <div className='page--splash'>
       <Spin size='large' />
     </div>
   );

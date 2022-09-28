@@ -39,54 +39,80 @@ const Navbar = () => {
     setLoading(false);
   };
 
-  return (
-    <div className='layout--container'>
-      <div className='navbar--container'>
-        <div className='navbar--image--containter'>
-          <img className='img--logo' src={IMAGE_LOGO1}></img>
-          <div className='navbar--logo--text'></div>
-        </div>
-        <CNavlink Icon={LockOutlined} to={PATH_VACCINE_ADD}>
-          Create Vaccine
-        </CNavlink>
-        <CNavlink Icon={MailOutlined} to={PATH_VACCINE_TABLE}>
-          Vaccines
-        </CNavlink>
-        <CNavlink Icon={MailOutlined} to={PATH_SETTING}>
-          Settings
-        </CNavlink>
+  const [optionsOn, setOptionsOn] = useState<boolean>(false);
+  const changeOptions = () => {
+    setOptionsOn(!optionsOn);
+  };
+  const onStyle = {
+    display: 'flex',
+  };
+  const offStyle = {
+    display: 'none',
+  };
 
-        <Modal
-          title='Logout'
-          open={isModalVisible}
-          onOk={() => handleLogout('')}
-          onCancel={() => setIsModalVisible(false)}
-          footer={[
-            <Button
-              className='button button--save button--edit'
-              key='back'
-              onClick={() => setIsModalVisible(false)}
-            >
-              Cancel
-            </Button>,
-            <Button
-              key='submit'
-              type='primary'
-              className='button button--save'
-              loading={loading}
-              onClick={() => handleLogout('')}
-            >
-              Logout
-            </Button>,
-          ]}
+  return (
+    <div className='layout--container' >
+      <div className='button--navbar--wrapper'>
+        <div onClick={changeOptions} className='options'>
+          &#8801;
+        </div>
+        <div
+        onClick={()=>setOptionsOn(false)}
+          className={
+            !optionsOn ? 'navbar--container' : 'navbar--container disable'
+          }
         >
-          <p>Are you sure you want to logout?</p>
-        </Modal>
-        <CNavlink Icon={MailOutlined} onClick={() => setIsModalVisible(true)}>
-          Logout
-        </CNavlink>
+          <div className='navbar--image--containter'>
+            <img className='img--logo' src={IMAGE_LOGO1}></img>
+            <div className='navbar--logo--text'></div>
+          </div>
+          <div onClick={changeOptions} className='options options--navbar'>
+            &#8801;{' '}
+          </div>
+          <CNavlink Icon={LockOutlined} to={PATH_VACCINE_ADD}>
+            Create Vaccine
+          </CNavlink>
+          <CNavlink Icon={MailOutlined} to={PATH_VACCINE_TABLE}>
+            Vaccines
+          </CNavlink>
+          <CNavlink Icon={MailOutlined} to={PATH_SETTING}>
+            Settings
+          </CNavlink>
+
+          <Modal
+            title='Logout'
+            open={isModalVisible}
+            onOk={() => handleLogout('')}
+            onCancel={() => setIsModalVisible(false)}
+            footer={[
+              <Button
+                className='button button--save button--edit'
+                key='back'
+                onClick={() => setIsModalVisible(false)}
+              >
+                Cancel
+              </Button>,
+              <Button
+                key='submit'
+                type='primary'
+                className='button button--save'
+                loading={loading}
+                onClick={() => handleLogout('')}
+              >
+                Logout
+              </Button>,
+            ]}
+          >
+            <p>Are you sure you want to logout?</p>
+          </Modal>
+          <CNavlink Icon={MailOutlined} onClick={() => setIsModalVisible(true)}>
+            Logout
+          </CNavlink>
+        </div>
       </div>
+      <div onClick={()=>setOptionsOn(false)} style={{width:"100%"}}>
       <Outlet />
+      </div>
     </div>
   );
 };

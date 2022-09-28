@@ -16,7 +16,6 @@ const AddVaccinePage = () => {
 
   return (
     <div className='page--addvaccine'>
-      Add page
       <VaccineForm initialValue={initalValue} />
     </div>
   );
