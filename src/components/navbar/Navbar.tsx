@@ -1,4 +1,4 @@
-import { PlusOutlined,UnorderedListOutlined, SettingFilled ,LogoutOutlined} from '@ant-design/icons';
+import { LogoutOutlined, PlusOutlined, SettingFilled, UnorderedListOutlined } from '@ant-design/icons';
 import { Button, Modal } from 'antd';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -10,7 +10,7 @@ import {
   PATH_LOGIN,
   PATH_SETTING,
   PATH_VACCINE_ADD,
-  PATH_VACCINE_TABLE,
+  PATH_VACCINE_TABLE
 } from '../../constants/routes';
 import { saveLoginResponse } from '../../cookies/cookie';
 import { resetAuth } from '../../redux_toolkit/slices/authSlice';
@@ -42,12 +42,6 @@ const Navbar = () => {
   const [optionsOn, setOptionsOn] = useState<boolean>(false);
   const changeOptions = () => {
     setOptionsOn(!optionsOn);
-  };
-  const onStyle = {
-    display: 'flex',
-  };
-  const offStyle = {
-    display: 'none',
   };
 
   return (

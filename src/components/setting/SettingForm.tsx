@@ -41,7 +41,7 @@ const SettingForm: React.FC = () => {
       const body = getEditPasswordBodyFromForm(values);
       const response = await editUser({
         ...body,
-        name: isChangeName ? body.name : authInfo.username,
+        name: isChangeName ? body.name.trim() : authInfo.username,
       });
 
       if (!isChangeName) {
@@ -63,7 +63,7 @@ const SettingForm: React.FC = () => {
   };
 
   const newNameRule = (getFieldValue: any, value: string) => {
-    if (isChangeName && getFieldValue('name') === authInfo.username) {
+    if (isChangeName && getFieldValue('name').trim() === authInfo.username) {
       return Promise.reject(new Error('New name cannot be same as old name'));
     } else {
       return Promise.resolve();

@@ -1,4 +1,5 @@
 import { message, Spin, Upload } from 'antd';
+import ImgCrop from 'antd-img-crop';
 import type { UploadProps } from 'antd/es/upload/interface';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -41,26 +42,26 @@ const CustomUpload: React.FC = () => {
     showUploadList: false,
   };
   return (
-    // <ImgCrop rotate>
-    <Upload {...props}>
-      <div className='customphoto--container'>
-        <div className='image--container'>
-          {Boolean(vaccineInfo.photoUrl) ? (
-            <img
-              className='img--avatar'
-              src={vaccineInfo.photoUrl}
-              alt='Loading'
-            />
-          ) : (
-            <img className='img--avatar' src={imageURL} alt='loading' />
-          )}
+    <ImgCrop rotate>
+      <Upload {...props}>
+        <div className='customphoto--container'>
+          <div className='image--container'>
+            {Boolean(vaccineInfo.photoUrl) ? (
+              <img
+                className='img--avatar'
+                src={vaccineInfo.photoUrl}
+                alt='Loading'
+              />
+            ) : (
+              <img className='img--avatar' src={imageURL} alt='loading' />
+            )}
+          </div>
+          <div className='icon--container'>
+            {loading ? <Spin /> : <div className='icon--plus'>+</div>}
+          </div>
         </div>
-        <div className='icon--container'>
-          {loading ? <Spin /> : <div className='icon--plus'>+</div>}
-        </div>
-      </div>
-    </Upload>
-    // </ImgCrop>
+      </Upload>
+    </ImgCrop>
   );
 };
 
