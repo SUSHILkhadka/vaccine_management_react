@@ -1,4 +1,4 @@
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { LockOutlined, UserOutlined ,CalendarOutlined,NumberOutlined} from '@ant-design/icons';
 import { Button, Col, Form, Row } from 'antd';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -11,7 +11,10 @@ import { addVaccine, editVaccine } from '../../axios/backendVaccine';
 import { PATH_VACCINE_TABLE } from '../../constants/routes';
 import { IVaccine } from '../../interface/IVaccine';
 import { RootState } from '../../redux_toolkit/stores/store';
-import successMessage, { showDefaultErrorMessage } from '../../utils/message';
+import successMessage, {
+  errorMessage,
+  showDefaultErrorMessage,
+} from '../../utils/message';
 import { getVaccineBodyFromForm } from '../../utils/parser';
 import { ruleForVaccine } from '../../validations/formValidator';
 import AllergyTable from '../allergy/AllergyTable';
@@ -53,8 +56,9 @@ const VaccineForm = ({ initialValue }: PropType) => {
         successMessage('vaccine edited successfully');
       }
       navigate(PATH_VACCINE_TABLE);
-    } catch (e) {
-      showDefaultErrorMessage();
+    } catch (e: any) {
+      if (e.response && e.response.data) errorMessage(e.response.data.message);
+      else showDefaultErrorMessage();
     }
     setloading(false);
   };
@@ -115,7 +119,7 @@ const VaccineForm = ({ initialValue }: PropType) => {
             >
               <CInputString
                 type='number'
-                prefix={<LockOutlined />}
+                prefix={<NumberOutlined />}
                 placeholder='input number of doses required'
               />
             </Form.Item>
@@ -128,7 +132,7 @@ const VaccineForm = ({ initialValue }: PropType) => {
             >
               <CInputString
                 type='date'
-                prefix={<LockOutlined />}
+                prefix={<CalendarOutlined />}
                 placeholder='input vaccine release date'
               />
             </Form.Item>

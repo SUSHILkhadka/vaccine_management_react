@@ -3,7 +3,7 @@
 exports[`should render splash screen properly 1`] = `
 <DocumentFragment>
   <div
-    class="splashscreen-container"
+    class="page--splash"
   >
     <div
       aria-busy="true"

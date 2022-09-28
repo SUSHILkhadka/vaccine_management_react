@@ -37,7 +37,7 @@ exports[`should render login page properly 1`] = `
             class="ant-col ant-col-24 ant-col-offset-1 ant-form-item-label"
           >
             <label
-              class="ant-form-item-required"
+              class=""
               for="email"
               title="Email"
             >
@@ -80,7 +80,6 @@ exports[`should render login page properly 1`] = `
                     </span>
                   </span>
                   <input
-                    aria-required="true"
                     class="ant-input"
                     id="email"
                     placeholder="input your email"

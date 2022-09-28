@@ -5,7 +5,6 @@ exports[`should render edit vaccine page properly 1`] = `
   <div
     class="page--addvaccine"
   >
-    Edit page
     <div>
       <form
         autocomplete="off"
@@ -45,7 +44,7 @@ exports[`should render edit vaccine page properly 1`] = `
                         <img
                           alt="loading"
                           class="img--avatar"
-                          src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"
+                          src="https://images.theconversation.com/files/411706/original/file-20210716-21-lunh2y.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop"
                         />
                       </div>
                       <div

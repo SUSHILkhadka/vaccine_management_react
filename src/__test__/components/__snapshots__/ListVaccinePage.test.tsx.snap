@@ -48,13 +48,7 @@ exports[`should render list vaccine page properly 1`] = `
                   >
                     <colgroup>
                       <col
-                        style="width: 20px;"
-                      />
-                      <col
-                        style="width: 20%;"
-                      />
-                      <col
-                        style="width: 20%;"
+                        style="width: 10%;"
                       />
                       <col
                         style="width: 20%;"
@@ -105,196 +99,6 @@ exports[`should render list vaccine page properly 1`] = `
                                     <span
                                       aria-label="caret-up"
                                       class="anticon anticon-caret-up ant-table-column-sorter-up active"
-                                      role="presentation"
-                                    >
-                                      <svg
-                                        aria-hidden="true"
-                                        data-icon="caret-up"
-                                        fill="currentColor"
-                                        focusable="false"
-                                        height="1em"
-                                        viewBox="0 0 1024 1024"
-                                        width="1em"
-                                      >
-                                        <path
-                                          d="M858.9 689L530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35z"
-                                        />
-                                      </svg>
-                                    </span>
-                                    <span
-                                      aria-label="caret-down"
-                                      class="anticon anticon-caret-down ant-table-column-sorter-down"
-                                      role="presentation"
-                                    >
-                                      <svg
-                                        aria-hidden="true"
-                                        data-icon="caret-down"
-                                        fill="currentColor"
-                                        focusable="false"
-                                        height="1em"
-                                        viewBox="0 0 1024 1024"
-                                        width="1em"
-                                      >
-                                        <path
-                                          d="M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z"
-                                        />
-                                      </svg>
-                                    </span>
-                                  </span>
-                                </span>
-                              </div>
-                            </span>
-                            <span
-                              class="ant-dropdown-trigger ant-table-filter-trigger"
-                              role="button"
-                              tabindex="-1"
-                            >
-                              <span
-                                aria-label="search"
-                                class="anticon anticon-search"
-                                role="img"
-                              >
-                                <svg
-                                  aria-hidden="true"
-                                  data-icon="search"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="1em"
-                                  viewBox="64 64 896 896"
-                                  width="1em"
-                                >
-                                  <path
-                                    d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0011.6 0l43.6-43.5a8.2 8.2 0 000-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"
-                                  />
-                                </svg>
-                              </span>
-                            </span>
-                          </div>
-                        </th>
-                        <th
-                          aria-label="No. of Doses sortable"
-                          class="ant-table-cell ant-table-column-has-sorters"
-                          style="text-align: center;"
-                          tabindex="0"
-                        >
-                          <div
-                            class="ant-table-filter-column"
-                          >
-                            <span
-                              class="ant-table-column-title"
-                            >
-                              <div
-                                class="ant-table-column-sorters"
-                              >
-                                <span
-                                  class="ant-table-column-title"
-                                >
-                                  No. of Doses
-                                </span>
-                                <span
-                                  class="ant-table-column-sorter ant-table-column-sorter-full"
-                                >
-                                  <span
-                                    class="ant-table-column-sorter-inner"
-                                  >
-                                    <span
-                                      aria-label="caret-up"
-                                      class="anticon anticon-caret-up ant-table-column-sorter-up"
-                                      role="presentation"
-                                    >
-                                      <svg
-                                        aria-hidden="true"
-                                        data-icon="caret-up"
-                                        fill="currentColor"
-                                        focusable="false"
-                                        height="1em"
-                                        viewBox="0 0 1024 1024"
-                                        width="1em"
-                                      >
-                                        <path
-                                          d="M858.9 689L530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35z"
-                                        />
-                                      </svg>
-                                    </span>
-                                    <span
-                                      aria-label="caret-down"
-                                      class="anticon anticon-caret-down ant-table-column-sorter-down"
-                                      role="presentation"
-                                    >
-                                      <svg
-                                        aria-hidden="true"
-                                        data-icon="caret-down"
-                                        fill="currentColor"
-                                        focusable="false"
-                                        height="1em"
-                                        viewBox="0 0 1024 1024"
-                                        width="1em"
-                                      >
-                                        <path
-                                          d="M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z"
-                                        />
-                                      </svg>
-                                    </span>
-                                  </span>
-                                </span>
-                              </div>
-                            </span>
-                            <span
-                              class="ant-dropdown-trigger ant-table-filter-trigger"
-                              role="button"
-                              tabindex="-1"
-                            >
-                              <span
-                                aria-label="search"
-                                class="anticon anticon-search"
-                                role="img"
-                              >
-                                <svg
-                                  aria-hidden="true"
-                                  data-icon="search"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="1em"
-                                  viewBox="64 64 896 896"
-                                  width="1em"
-                                >
-                                  <path
-                                    d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0011.6 0l43.6-43.5a8.2 8.2 0 000-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"
-                                  />
-                                </svg>
-                              </span>
-                            </span>
-                          </div>
-                        </th>
-                        <th
-                          aria-label="Release Date sortable"
-                          class="ant-table-cell ant-table-column-has-sorters"
-                          style="text-align: center;"
-                          tabindex="0"
-                        >
-                          <div
-                            class="ant-table-filter-column"
-                          >
-                            <span
-                              class="ant-table-column-title"
-                            >
-                              <div
-                                class="ant-table-column-sorters"
-                              >
-                                <span
-                                  class="ant-table-column-title"
-                                >
-                                  Release Date
-                                </span>
-                                <span
-                                  class="ant-table-column-sorter ant-table-column-sorter-full"
-                                >
-                                  <span
-                                    class="ant-table-column-sorter-inner"
-                                  >
-                                    <span
-                                      aria-label="caret-up"
-                                      class="anticon anticon-caret-up ant-table-column-sorter-up"
                                       role="presentation"
                                     >
                                       <svg
@@ -445,7 +249,7 @@ exports[`should render list vaccine page properly 1`] = `
                           <img
                             alt="Loading"
                             class="img-avatar-table"
-                            src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"
+                            src="https://images.theconversation.com/files/411706/original/file-20210716-21-lunh2y.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop"
                           />
                         </td>
                         <td
@@ -453,20 +257,6 @@ exports[`should render list vaccine page properly 1`] = `
                           style="text-align: center;"
                         >
                           a
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                          style="text-align: center;"
-                        >
-                          1
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                          style="text-align: center;"
-                        >
-                          <div>
-                            9/28/2022
-                          </div>
                         </td>
                         <td
                           class="ant-table-cell ant-table-column-sort"
@@ -543,7 +333,7 @@ exports[`should render list vaccine page properly 1`] = `
                           <img
                             alt="Loading"
                             class="img-avatar-table"
-                            src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"
+                            src="https://images.theconversation.com/files/411706/original/file-20210716-21-lunh2y.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop"
                           />
                         </td>
                         <td
@@ -551,20 +341,6 @@ exports[`should render list vaccine page properly 1`] = `
                           style="text-align: center;"
                         >
                           vaccinenameiswired
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                          style="text-align: center;"
-                        >
-                          1
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                          style="text-align: center;"
-                        >
-                          <div>
-                            9/28/2022
-                          </div>
                         </td>
                         <td
                           class="ant-table-cell ant-table-column-sort"
@@ -641,7 +417,7 @@ exports[`should render list vaccine page properly 1`] = `
                           <img
                             alt="Loading"
                             class="img-avatar-table"
-                            src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"
+                            src="https://images.theconversation.com/files/411706/original/file-20210716-21-lunh2y.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop"
                           />
                         </td>
                         <td
@@ -649,20 +425,6 @@ exports[`should render list vaccine page properly 1`] = `
                           style="text-align: center;"
                         >
                           a
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                          style="text-align: center;"
-                        >
-                          1
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                          style="text-align: center;"
-                        >
-                          <div>
-                            9/28/2022
-                          </div>
                         </td>
                         <td
                           class="ant-table-cell ant-table-column-sort"
@@ -738,7 +500,7 @@ exports[`should render list vaccine page properly 1`] = `
                           <img
                             alt="Loading"
                             class="img-avatar-table"
-                            src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"
+                            src="https://images.theconversation.com/files/411706/original/file-20210716-21-lunh2y.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop"
                           />
                         </td>
                         <td
@@ -746,20 +508,6 @@ exports[`should render list vaccine page properly 1`] = `
                           style="text-align: center;"
                         >
                           a
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                          style="text-align: center;"
-                        >
-                          1
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                          style="text-align: center;"
-                        >
-                          <div>
-                            9/28/2022
-                          </div>
                         </td>
                         <td
                           class="ant-table-cell ant-table-column-sort"

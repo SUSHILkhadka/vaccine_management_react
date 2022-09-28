@@ -49,10 +49,10 @@ const RegisterForm: React.FC = () => {
   };
 
   const defaultValue = {
-    name: 'a',
-    email: 'a@gmail.com',
-    password: 'a@gmail.com',
-    confirmPassword: 'a@gmail.com',
+    name: '',
+    email: 'aa@gmail.com',
+    password: 'aa@gmail.com',
+    confirmPassword: 'aa@gmail.com',
   };
 
   return (
@@ -68,7 +68,7 @@ const RegisterForm: React.FC = () => {
         wrapperCol={{ span: 24 }}
         onFinish={onFinish}
         autoComplete='off'
-        // initialValues={defaultValue}
+        initialValues={defaultValue}
         requiredMark={false}
       >
         <Form.Item

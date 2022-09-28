@@ -62,9 +62,8 @@
   -moz-box-shadow: 2px 8px 10px -5px rgba(0, 0, 0, 0.75);
 }
 
-.options--navbar{
+.options--navbar {
   width: 20%;
-
 }
 
 .options:hover {
@@ -77,7 +76,7 @@
   .options {
     display: flex;
   }
-  .layout--container{
+  .layout--container {
     flex-direction: column;
   }
   .navbar--container {

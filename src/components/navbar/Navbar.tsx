@@ -1,4 +1,4 @@
-import { LockOutlined, MailOutlined } from '@ant-design/icons';
+import { PlusOutlined,UnorderedListOutlined, SettingFilled ,LogoutOutlined} from '@ant-design/icons';
 import { Button, Modal } from 'antd';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -69,13 +69,13 @@ const Navbar = () => {
           <div onClick={changeOptions} className='options options--navbar'>
             &#8801;{' '}
           </div>
-          <CNavlink Icon={LockOutlined} to={PATH_VACCINE_ADD}>
+          <CNavlink Icon={PlusOutlined} to={PATH_VACCINE_ADD}>
             Create Vaccine
           </CNavlink>
-          <CNavlink Icon={MailOutlined} to={PATH_VACCINE_TABLE}>
+          <CNavlink Icon={UnorderedListOutlined} to={PATH_VACCINE_TABLE}>
             Vaccines
           </CNavlink>
-          <CNavlink Icon={MailOutlined} to={PATH_SETTING}>
+          <CNavlink Icon={SettingFilled} to={PATH_SETTING}>
             Settings
           </CNavlink>
 
@@ -105,7 +105,7 @@ const Navbar = () => {
           >
             <p>Are you sure you want to logout?</p>
           </Modal>
-          <CNavlink Icon={MailOutlined} onClick={() => setIsModalVisible(true)}>
+          <CNavlink Icon={LogoutOutlined} onClick={() => setIsModalVisible(true)}>
             Logout
           </CNavlink>
         </div>
