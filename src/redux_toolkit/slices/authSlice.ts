@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { URL_TO_BACKEND } from '../../constants/common';
 import { getRefreshToken } from '../../cookies/cookie';
 import { IAuth } from '../../interface/IAuth';
 

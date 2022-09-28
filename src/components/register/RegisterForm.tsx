@@ -48,13 +48,6 @@ const RegisterForm: React.FC = () => {
     return startTrimmedValue;
   };
 
-  const defaultValue = {
-    name: '',
-    email: 'aa@gmail.com',
-    password: 'aa@gmail.com',
-    confirmPassword: 'aa@gmail.com',
-  };
-
   return (
     <div className='form'>
       <div className='login--image--containter'>
@@ -68,7 +61,7 @@ const RegisterForm: React.FC = () => {
         wrapperCol={{ span: 24 }}
         onFinish={onFinish}
         autoComplete='off'
-        initialValues={defaultValue}
+        // initialValues={defaultValue}
         requiredMark={false}
       >
         <Form.Item
