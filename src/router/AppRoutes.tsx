@@ -11,6 +11,7 @@ import {
   PATH_VACCINE_TABLE,
 } from '../constants/routes';
 import LoginPage from '../pages/login/LoginPage';
+import NotFoundScreen from '../pages/NotFoundScreen';
 import RegisterPage from '../pages/register/RegisterPage';
 import SettingPage from '../pages/setting/SettingPage';
 import SplashScreen from '../pages/SplashScreen';
@@ -48,6 +49,7 @@ function AppRoutes() {
             <Route path={PATH_SETTING} element={<SettingPage />} />
           </Route>
         </Route>
+        <Route path='*' element={<NotFoundScreen/>} />
       </Routes>
     </BrowserRouter>
   );
