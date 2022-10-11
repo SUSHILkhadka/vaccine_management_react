@@ -1,4 +1,4 @@
-import { UserOutlined } from '@ant-design/icons';
+import { BugOutlined } from '@ant-design/icons';
 import { Button, Form, Modal } from 'antd';
 import { useDispatch } from 'react-redux';
 import {
@@ -22,6 +22,7 @@ type PropType = {
 
 const CModalAllergy = ({ open, handleCancel, edit }: PropType) => {
   const dispatch = useDispatch();
+  const [form] = Form.useForm();
 
   const onFinish = (values: any) => {
     if (edit.name && values.name != edit.name) {
@@ -30,6 +31,12 @@ const CModalAllergy = ({ open, handleCancel, edit }: PropType) => {
     if (!edit.name) {
       dispatch(addNewAllergy(values.name.trim()));
     }
+    if (!edit.name) form.resetFields();
+    handleCancel();
+  };
+
+  const onCancel = () => {
+    form.resetFields();
     handleCancel();
   };
 
@@ -47,10 +54,10 @@ const CModalAllergy = ({ open, handleCancel, edit }: PropType) => {
       <Modal
         open={open}
         title={!edit.name ? 'Add new Allergy' : 'Edit Allergy'}
-        onCancel={handleCancel}
+        onCancel={onCancel}
         footer={[]}
       >
-        <Form onFinish={onFinish} initialValues={initialValue}>
+        <Form form={form} onFinish={onFinish} initialValues={initialValue}>
           <Form.Item
             wrapperCol={{ span: 24 }}
             label='Allergy name'
@@ -60,12 +67,12 @@ const CModalAllergy = ({ open, handleCancel, edit }: PropType) => {
             normalize={trimmer}
           >
             <CInputString
-              prefix={<UserOutlined />}
+              prefix={<BugOutlined />}
               placeholder='input allergy name'
             />
           </Form.Item>
           <div className='footer--buttons'>
-            <Button className='button button--save' onClick={handleCancel}>
+            <Button className='button button--save' onClick={onCancel}>
               Cancel
             </Button>
             <Button htmlType='submit' className='button button--save'>

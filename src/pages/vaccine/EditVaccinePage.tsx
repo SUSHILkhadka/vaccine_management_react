@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllAllergiesByPatientId } from '../../axios/backendAllergy';
 import VaccineForm from '../../components/vaccine/VaccineForm';
@@ -12,6 +12,7 @@ import { errorMessage, showDefaultErrorMessage } from '../../utils/message';
 const EditVaccinePage = () => {
   const vaccineInfo = useSelector((state: RootState) => state.vaccine);
   const dispatch = useDispatch();
+  const [loadingAllergy,setLoadingAllergy]=useState(true);
 
   useEffect(() => {
     let isMounted = true;
@@ -30,6 +31,7 @@ const EditVaccinePage = () => {
           showDefaultErrorMessage();
         }
       }
+      setLoadingAllergy(false)
     };
     getAllAllergyOfVaccine();
 
@@ -50,7 +52,7 @@ const EditVaccinePage = () => {
 
   return (
     <div className='page--addvaccine'>
-      <VaccineForm initialValue={initialValue} />
+      <VaccineForm initialValue={initialValue} loadingAllergy={loadingAllergy} />
     </div>
   );
 };

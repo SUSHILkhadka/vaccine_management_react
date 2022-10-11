@@ -1,4 +1,8 @@
-import { LockOutlined, UserOutlined ,CalendarOutlined,NumberOutlined} from '@ant-design/icons';
+import {
+  CalendarOutlined,
+  NumberOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
 import { Button, Col, Form, Row } from 'antd';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -25,8 +29,9 @@ import './VaccineForm.scss';
 
 type PropType = {
   initialValue: IVaccine;
+  loadingAllergy?: boolean;
 };
-const VaccineForm = ({ initialValue }: PropType) => {
+const VaccineForm = ({ initialValue, loadingAllergy }: PropType) => {
   const [loading, setloading] = useState(false);
   const vaccineInfo = useSelector((state: RootState) => state.vaccine);
   const allergyArrayInfo = useSelector((state: RootState) => state.allergy);
@@ -90,7 +95,7 @@ const VaccineForm = ({ initialValue }: PropType) => {
                 loading={loading}
                 className='button button--save'
               >
-                Save
+                {initialValue.name != '' ? 'Save changes' : 'Add Vaccine'}
               </Button>
             </Col>
           </Row>
@@ -142,7 +147,7 @@ const VaccineForm = ({ initialValue }: PropType) => {
             </Form.Item>
           </div>
           <div className='form--allergy'>
-            <AllergyTable />
+            <AllergyTable loadingAllergy={loadingAllergy} />
           </div>
         </div>
       </Form>

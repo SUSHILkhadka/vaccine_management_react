@@ -31,8 +31,8 @@ const AllergyCard = ({ index, name }: PropType) => {
 
   return (
     <div>
-      <div onClick={showModal} className='allergy--card'>
-        {name}
+      <div  className='allergy--card'>
+        <div onClick={showModal}>{name}</div>
         <div onClick={handleDelete} className='allergy--card--deleteicon'>
         &#10005;
         </div>
