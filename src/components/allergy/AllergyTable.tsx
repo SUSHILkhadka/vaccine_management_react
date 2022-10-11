@@ -19,13 +19,14 @@ const AllergyTable = ({ loadingAllergy }: { loadingAllergy?: boolean }) => {
           <>
             {allergyArrayInfo.map((element: IAllergy, index: number) => {
               if (element.status != 'deleted')
-                return (
+               {
+                 return (
                   <AllergyCard
                     key={element.id}
                     index={index}
                     name={element.name}
                   />
-                );
+                );}
             })}
           </>
         )}

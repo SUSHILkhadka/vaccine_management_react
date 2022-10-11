@@ -66,8 +66,6 @@ const SettingForm: React.FC = () => {
       } else {
         showDefaultErrorMessage();
       }
-      saveLoginResponse('');
-      navigate(PATH_LOGIN);
     }
     setloading(false);
   };
