@@ -3,9 +3,10 @@ import { Form } from 'antd';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { editUser, logout } from '../../axios/backendUser';
+import { editUser, login, logout } from '../../axios/backendUser';
 import { PATH_LOGIN } from '../../constants/routes';
 import { saveLoginResponse } from '../../cookies/cookie';
+import { setAuthWithLoginResponse } from '../../redux_toolkit/slices/authSlice';
 import { AppDispatch, RootState } from '../../redux_toolkit/stores/store';
 import '../../styles/Form.scss';
 import successMessage, {
@@ -46,18 +47,27 @@ const SettingForm: React.FC = () => {
 
       if (!isChangeName) {
         successMessage('Password changed successfully');
+        const res = await logout();
+        saveLoginResponse('');
+        navigate(PATH_LOGIN);
       } else {
         successMessage('Name changed successfully');
+        const loginBody = {
+          email: authInfo.email,
+          password: values.oldPassword,
+        };
+        const response = await login(loginBody);
+        dispatch(setAuthWithLoginResponse(response));
+        saveLoginResponse(response);
       }
-      const res = await logout();
-      saveLoginResponse('');
-      navigate(PATH_LOGIN);
     } catch (e: any) {
       if (e.response) {
         errorMessage(e.response.data.message);
       } else {
         showDefaultErrorMessage();
       }
+      saveLoginResponse('');
+      navigate(PATH_LOGIN);
     }
     setloading(false);
   };

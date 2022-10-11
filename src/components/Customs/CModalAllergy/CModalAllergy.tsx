@@ -1,4 +1,4 @@
-import { UserOutlined } from '@ant-design/icons';
+import { BugOutlined } from '@ant-design/icons';
 import { Button, Form, Modal } from 'antd';
 import { useDispatch } from 'react-redux';
 import {
@@ -67,7 +67,7 @@ const CModalAllergy = ({ open, handleCancel, edit }: PropType) => {
             normalize={trimmer}
           >
             <CInputString
-              prefix={<UserOutlined />}
+              prefix={<BugOutlined />}
               placeholder='input allergy name'
             />
           </Form.Item>
