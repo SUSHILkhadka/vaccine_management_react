@@ -25,8 +25,9 @@ import './VaccineForm.scss';
 
 type PropType = {
   initialValue: IVaccine;
+  loadingAllergy?:boolean;
 };
-const VaccineForm = ({ initialValue }: PropType) => {
+const VaccineForm = ({ initialValue,loadingAllergy }: PropType) => {
   const [loading, setloading] = useState(false);
   const vaccineInfo = useSelector((state: RootState) => state.vaccine);
   const allergyArrayInfo = useSelector((state: RootState) => state.allergy);
@@ -142,7 +143,7 @@ const VaccineForm = ({ initialValue }: PropType) => {
             </Form.Item>
           </div>
           <div className='form--allergy'>
-            <AllergyTable />
+            <AllergyTable loadingAllergy={loadingAllergy} />
           </div>
         </div>
       </Form>
